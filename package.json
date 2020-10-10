@@ -17,6 +17,7 @@
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "nuxt-svg-loader": "^1.2.0",
+    "nuxt-typed-vuex": "^0.1.22",
     "nuxt-vuex-localstorage": "^1.2.7"
   },
   "devDependencies": {

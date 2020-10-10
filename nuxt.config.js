@@ -30,12 +30,13 @@ export default {
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [
     // https://go.nuxtjs.dev/typescript
-        '@nuxt/typescript-build'
+        '@nuxt/typescript-build',
+        'nuxt-typed-vuex'
     ],
 
     // Modules (https://go.nuxtjs.dev/config-modules)
     modules: [
-        'nuxt-svg-loader',
+        'nuxt-svg-loader'
         // ['nuxt-vuex-localstorage', {
         //     localStorage: ['foo', 'bar'],
         //     sessionStorage: ['sfoo', 'sbar']
@@ -44,6 +45,20 @@ export default {
 
     // Build Configuration (https://go.nuxtjs.dev/config-build)
     build: {
+        transpile: [
+            /typed-vuex/
+        ],
+        extend (config, ctx) {
+            // Run ESLint on save
+            if (ctx.isDev && ctx.isClient) {
+                config.module.rules.push({
+                    enforce: 'pre',
+                    test: /\.(js|vue)$/,
+                    loader: 'eslint-loader',
+                    exclude: /(node_modules)|(\.svg$)/ /* <--- here */
+                })
+            }
+        }
     },
 
     compontnets: true
