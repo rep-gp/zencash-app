@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 
-let path =
+const path =
     process.env.NODE_ENV === 'production'
         ? '.env'
         : '.env.' + process.env.NODE_ENV
@@ -45,7 +45,7 @@ export default {
 
     // Modules (https://go.nuxtjs.dev/config-modules)
     modules: [
-        'nuxt-svg-loader',
+        'nuxt-svg-loader'
         // ['nuxt-vuex-localstorage', {
         //     localStorage: ['foo', 'bar'],
         //     sessionStorage: ['sfoo', 'sbar']
@@ -64,9 +64,6 @@ export default {
         storageBucket: process.env.STORAGE_BUCKET,
         messagingSenderId: process.env.MESSAGING_SENDER_ID,
         appId: process.env.APP_ID,
-        measurementId: process.env.MEASUREMENT_ID,
-        //databaseSecret: process.env.DATABASE_SECRET,
-    },
-
-    components: true
+        measurementId: process.env.MEASUREMENT_ID
+    }
 }
