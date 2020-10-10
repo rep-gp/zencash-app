@@ -1,3 +1,12 @@
+import dotenv from 'dotenv'
+
+let path =
+    process.env.NODE_ENV === 'production'
+        ? '.env'
+        : '.env.' + process.env.NODE_ENV
+
+dotenv.config({ path })
+
 export default {
     // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
     ssr: false,
@@ -21,7 +30,8 @@ export default {
 
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
     plugins: [
-        '~/plugins/composition-api.ts'
+        '~/plugins/composition-api.ts',
+        '~/plugins/firebase-service.ts'
     ],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -29,7 +39,7 @@ export default {
 
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [
-    // https://go.nuxtjs.dev/typescript
+        // https://go.nuxtjs.dev/typescript
         '@nuxt/typescript-build'
     ],
 
@@ -46,5 +56,17 @@ export default {
     build: {
     },
 
-    compontnets: true
+    env: {
+        apiKey: process.env.API_KEY,
+        authDomain: process.env.AUTH_DOMAIN,
+        databaseURL: process.env.DATABASE_URL,
+        projectId: process.env.PROJECT_ID,
+        storageBucket: process.env.STORAGE_BUCKET,
+        messagingSenderId: process.env.MESSAGING_SENDER_ID,
+        appId: process.env.APP_ID,
+        measurementId: process.env.MEASUREMENT_ID,
+        //databaseSecret: process.env.DATABASE_SECRET,
+    },
+
+    components: true
 }
