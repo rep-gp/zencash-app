@@ -1,43 +1,30 @@
-<<<<<<< HEAD
 import { AccessorType } from '@/store'
-
-declare module 'vue/types/vue' {
-    interface Vue {
-        $accessor: typeof AccessorType,
-=======
 import { Service } from '~/plugins/firebase-service'
 
 declare module 'vue/types/vue' {
     interface Vue {
-        $api: Service
->>>>>>> master
+        $accessor: typeof AccessorType
+        $api: typeof Service
     }
 }
 
 declare module '@nuxt/types' {
     interface NuxtAppOptions {
-<<<<<<< HEAD
-        $accessor: typeof AccessorType,
+        $accessor: typeof AccessorType
+        $api: typeof Service
     }
 
     interface Context {
-        $accessor: typeof AccessorType,
+        $accessor: typeof AccessorType
+        $api: typeof Service
     }
 }
 
 declare module 'vuex/types/index' {
     interface Store<S> {
-        $accessor: typeof AccessorType,
+        $accessor: typeof AccessorType
+        $api: typeof Service
     }
 }
 
-declare module 'vue-json pretty'
-=======
-        $api: Service
-    }
-
-    interface Context {
-        $api: Service
-    }
-}
->>>>>>> master
+declare module 'vue-json pretty' {}

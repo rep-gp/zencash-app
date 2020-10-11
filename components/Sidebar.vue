@@ -58,7 +58,7 @@ export default defineComponent({
         items: { type: Array, default: (): [] => [] }
     },
 
-    setup(_, { root: { $router, $accessor } }) {
+    setup(_, { root: { $router, $accessor, $api } }) {
         const isExpanded = computed(() => $accessor.ui.isExpanded)
         const isDarkMode = computed(() => $accessor.ui.isDarkMode)
 
@@ -70,6 +70,11 @@ export default defineComponent({
         function pushTo(routeName: string) {
             $router.push({ name: routeName })
         }
+
+        $api.listenData('/companies', (snap) => {
+            const val = snap.toJSON()
+            console.log(val)
+        })
 
         return {
             icons,
