@@ -31,7 +31,7 @@
                             :class="['sidebar-item', {'--is-active': isItemActive(item.route)}]"
                             @click="pushTo(item.routeName)"
                         >
-                            <icon :is="icons[item.icon]" v-if="item.icon" class="sidebar-item-icon" />
+                            <icon :is="icons[item.icon] || icons.home" class="sidebar-item-icon" />
 
                             <div class="sidebar-item-name">
                                 {{ item.name }}
@@ -110,16 +110,18 @@ $ease-in: cubic-bezier(0.445, 0.05, 0.55, 0.95) $sidebar-transition-duration;
 $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
 
 $sidebar-text-color: #abd6ab;
+$sidebar-background-color: rgb(74, 116, 88);
+$sidebar-hover-color: rgb(107, 129, 107);
+$sidebar-selected-color: rgb(46, 83, 46);
 
 .sidebar {
     border-radius: 0 20px 20px 0;
-    padding: 16px;
     color: $sidebar-text-color;
     width: $sidebar-tiny-width;
     height: 100vh;
     position: fixed;
     z-index: 999;
-    background-color: rgb(74, 116, 88);
+    background-color: $sidebar-background-color;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.349);
     transition: $ease-out;
     cursor: initial;
@@ -131,10 +133,13 @@ $sidebar-text-color: #abd6ab;
         overflow: hidden;
 
         .sidebar-menu {
+            padding: 16px;
+
             &-toggle {
                 display: grid;
                 place-items: center;
             }
+
             &-icon {
                 min-width: 20px !important;
                 width: 20px !important;
@@ -154,24 +159,24 @@ $sidebar-text-color: #abd6ab;
 
         .sidebar-section-title {
             font-weight: 800px;
-            font-size: 18px;
-            // margin-bottom: 16px;
+            font-size: 20px;
             margin: 32px 0 16px;
             opacity: 0;
             transition: $ease-out;
+            padding: 8px 20px;
             overflow: hidden;
-            // max-height: 24px;
-            padding: 8px;
-            overflow: hidden;
-            border-radius: 4px;
             cursor: pointer;
+        }
 
-            &.--is-active {
-                background-color: #000;//$sidebar-select;
+        .sidebar-item, .sidebar-section-title {
+            &:hover {
+                background-color: $sidebar-hover-color;
             }
 
-            &:hover {
-                background-color: rgb(46, 83, 46);
+            &.--is-active {
+                color: #fff;
+                background-color: $sidebar-selected-color;
+                border-left: 2px solid #fff;
             }
         }
 
@@ -179,15 +184,10 @@ $sidebar-text-color: #abd6ab;
             display: flex;
             margin-top: 4px;
             align-items: center;
-            padding: 8px;
+            padding: 8px 30px;
             overflow: hidden;
-            border-radius: 4px;
             cursor: pointer;
             transition: 0.2s;
-
-            &:hover {
-                background-color: rgb(46, 83, 46);
-            }
 
             &-icon {
                 min-width: 20px !important;
@@ -206,15 +206,6 @@ $sidebar-text-color: #abd6ab;
                 max-height: 22px;
                 overflow: hidden;
                 color: #fff;
-            }
-
-            &.--is-active {
-                background-color: #000;//$sidebar-select;
-            }
-
-            &:hover {
-                // background-color: $sidebar-select-hover;
-                transition: 0.2s;
             }
         }
 
