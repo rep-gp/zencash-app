@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/database'
 
 type FBEvent = (
@@ -16,6 +16,9 @@ const firebaseConfig = {
     appId: process.env.appId,
     measurementId: process.env.measurementId
 }
+
+const snapshotToArray = (snapshot: FBEvent) =>
+    Object.entries(snapshot).map(e => Object.assign(e[1], { key: e[0] }))
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig)
@@ -35,8 +38,8 @@ export class Service {
         }
     }
 
-    public static listenData(path: string, callback: FBEvent): FBEvent {
-        return Service.db.ref(path).on('value', callback)
+    public static listenData(path: string, callback: FBEvent): any {
+        return snapshotToArray(Service.db.ref(path).on('value', callback))
     }
 }
 
