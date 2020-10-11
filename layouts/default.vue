@@ -60,7 +60,7 @@ export default defineComponent({
 <style lang="scss">
 :root {
     --main-background: #{$main-background--light};
-    --font-color: #{$font-color--light};
+    --main-color: #{$main-color--light};
 
     // sidebar light colors
     --sidebar-background: #{$sidebar-background--light};
@@ -71,7 +71,7 @@ export default defineComponent({
 }
 .dark {
     --main-background: #{$main-background--dark};
-    --font-color: #{$font-color--dark};
+    --main-color: #{$main-color--dark};
 
     // sidebar dark colors
     --sidebar-background: #{$sidebar-background--dark};
@@ -114,7 +114,7 @@ html {
     padding: 32px 40px 32px ($sidebar-tiny-width + 32px);
     transition: $ease-out;
     background-color: var(--main-background);
-    color: var(--font-color);
+    color: var(--main-color);
 
     &.--is-expanded {
         padding-left: ($sidebar-width + 32px);

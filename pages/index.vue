@@ -1,18 +1,12 @@
 <template>
     <div class="home-page">
-        <h1>Home Page</h1>
-        <div class="user-score">score on bar</div>
+        <h1>Zen Cash</h1>
 
-        <div class="user-cash">cash</div>
-
-        <div class="user-expenses">
-            <div class="user-expenses-chart">grafico bonito</div>
-            <div class="user-expenses-data"> gastos </div>
-        </div>
+        <home-score />
     </div>
 </template>
 
-<script >
+<script>
 
 import { defineComponent } from '@vue/composition-api'
 
@@ -31,24 +25,8 @@ export default defineComponent({
     min-height: 93.4vh;
 
     h1 {
-        font-size: 40px;
-        margin-bottom: 20px;
-    }
-
-    & > .user-score {
-        margin-bottom: 20px;
-    }
-
-    & > .user-cash {
-        margin-bottom: 20px;
-    }
-
-    .user-expenses {
-        display: flex;
-        justify-content: space-between;
-
-        &-chart {}
-        &-data {}
+        font-size: 50px;
+        margin-bottom: 10px;
     }
 }
 </style>

@@ -53,7 +53,7 @@ export default {
         'nuxt-svg-loader',
         '@nuxtjs/style-resources',
         ['nuxt-vuex-localstorage', {
-            sessionStorage: ['ui'],
+            sessionStorage: ['ui']
             // localStorage: ['']
         }]
     ],
@@ -62,7 +62,7 @@ export default {
         scss: [
             './assets/main.scss',
             './assets/colors.scss'
-        ],
+        ]
     },
 
     // Build Configuration (https://go.nuxtjs.dev/config-build)
