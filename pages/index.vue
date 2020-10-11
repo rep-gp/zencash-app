@@ -28,23 +28,22 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home-page {
+    min-height: 93.4vh;
+
     h1 {
         font-size: 40px;
         margin-bottom: 20px;
     }
 
     & > .user-score {
-        border: 1px solid red;
         margin-bottom: 20px;
     }
 
     & > .user-cash {
-        border: 1px solid red;
         margin-bottom: 20px;
     }
 
     .user-expenses {
-        border: 1px solid red;
         display: flex;
         justify-content: space-between;
 
