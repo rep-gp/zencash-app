@@ -18,7 +18,7 @@ export default defineComponent({
     computed: {
         ...mapState('ui', ['isExpanded']),
 
-        items () {
+        items() {
             return [
                 {
                     section: '',

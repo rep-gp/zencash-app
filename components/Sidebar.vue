@@ -3,7 +3,7 @@
         <div class="sidebar-items">
             <div class="sidebar-menu">
                 <div class="sidebar-menu-toggle" @click="toggleExpand">
-                    <menu-icon class="sidebar-menu-toggle-icon"/>
+                    <menu-icon class="sidebar-menu-toggle-icon" />
                 </div>
 
                 <div v-if="isExpanded" class="sidebar-menu-text">
@@ -54,16 +54,21 @@ export default defineComponent({
         items: { type: Array, default: (): [] => [] }
     },
 
-    setup (_, { root: { $router, $accessor } }) {
+    setup(_, { root: { $router, $accessor, $api } }) {
         const isExpanded = computed(() => $accessor.ui.isExpanded)
 
         const icons = computed(() => ({
             home: HomeIcon
         }))
 
-        function pushTo (routeName: string) {
+        function pushTo(routeName: string) {
             $router.push({ name: routeName })
         }
+
+        $api.listenData('/companies', (snap) => {
+            const val = snap.toJSON()
+            console.log(val)
+        })
 
         return {
             icons,
@@ -74,13 +79,13 @@ export default defineComponent({
     },
 
     methods: {
-        toggleExpand () {
-            this.$accessor.ui.setExpand(!this.isExpanded)
-        }
-        toggleLayout () {
+        toggleExpand() {
+            // this.$accessor.ui.setExpand(!this.isExpanded)
+        },
+        toggleLayout() {
             console.log('THEME')
         },
-        isItemActive (route: string) {
+        isItemActive(route: string) {
             return this.$route.path.includes(route)
         }
     }
