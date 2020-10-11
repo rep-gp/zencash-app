@@ -31,12 +31,14 @@ export default defineComponent({
                     section: 'Caixa',
                     routeName: 'cash',
                     route: '/cash',
+                    icon: 'wallet',
                     items: []
                 },
                 {
                     section: 'Gastos',
                     routeName: 'expenses',
                     route: '/expenses',
+                    icon: 'items',
                     items: [
                         {
                             name: 'Impostos',
@@ -60,29 +62,20 @@ export default defineComponent({
 <style lang="scss">
 :root {
     --main-background: #{$main-background--light};
-    --main-color: #{$main-color--light};
-
-    // sidebar light colors
-    --sidebar-background: #{$sidebar-background--light};
-    --sidebar-item: #{$sidebar-item--light};
-    --sidebar-section: #{$sidebar-section--light};
-    --sidebar-hover: #{$sidebar-hover--light};
-    --sidebar-selected: #{$sidebar-selected--light};
+    --primary-text: #{$primary-text--light};
+    --gray-light: #{$gray-light--light};
+    --green: #{$green--light};
+    --orange: #{$orange--light};
 }
 .dark {
     --main-background: #{$main-background--dark};
-    --main-color: #{$main-color--dark};
-
-    // sidebar dark colors
-    --sidebar-background: #{$sidebar-background--dark};
-    --sidebar-item: #{$sidebar-item--dark};
-    --sidebar-section: #{$sidebar-section--dark};
-    --sidebar-hover: #{$sidebar-hover--dark};
-    --sidebar-selected: #{$sidebar-selected--dark};
+    --primary-text: #{$primary-text--dark};
+    --green: #{$green--dark};
 }
 
 html {
-    font-family: Roboto,
+    font-family: Barlow,
+        Roboto,
         'Source Sans Pro',
         -apple-system,
         BlinkMacSystemFont,

@@ -21,11 +21,13 @@
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "firebase": "^7.23.0",
+    "firebaseui": "^4.6.1",
     "nuxt": "^2.14.6",
     "nuxt-svg-loader": "^1.2.0",
     "nuxt-typed-vuex": "^0.1.22",
     "nuxt-vuex-localstorage": "^1.2.7",
-    "vue-apexcharts": "^1.6.0"
+    "vue-apexcharts": "^1.6.0",
+    "vuex-composition-helpers": "^1.0.21"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",

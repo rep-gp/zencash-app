@@ -1,18 +1,8 @@
 <template>
     <div :class="['sidebar', {'--is-expanded': isExpanded}]">
         <div class="sidebar-items">
-            <div class="sidebar-menu">
-                <div class="sidebar-menu-toggle" @click="toggleExpand">
-                    <menu-icon class="sidebar-menu-icon" />
-                </div>
-
-                <div v-if="isExpanded" class="sidebar-menu-text">
-                    MENU
-                </div>
-
-                <div v-if="isExpanded" class="sidebar-menu-bulb" @click="toggleLayout">
-                    <bulb-icon :class="['sidebar-menu-icon', {'--is-dark': isDarkMode}]" />
-                </div>
+            <div class="sidebar-logo">
+                <img src="@/static/logo.png" alt="ZenCash Logo" class="sidebar-logo-img">
             </div>
 
             <div v-if="true">
@@ -21,11 +11,15 @@
                         :class="['sidebar-section', {'--is-active': isItemActive(section.route)}]"
                         @click="pushTo(section.routeName)"
                     >
-                        <icon :is="icons[section.icon]" v-if="section.icon" class="sidebar-section-icon" />
-
                         <div class="sidebar-section-title">
                             {{ section.section }}
                         </div>
+
+                        <icon
+                            :is="icons[section.icon]"
+                            v-if="section.icon"
+                            class="sidebar-section-icon"
+                        />
                     </h4>
 
                     <div v-if="section.items.length">
@@ -35,11 +29,11 @@
                             :class="['sidebar-item', {'--is-active': isItemActive(item.route)}]"
                             @click="pushTo(item.routeName)"
                         >
-                            <icon :is="icons[item.icon]" v-if="item.icon" class="sidebar-item-icon" />
-
                             <div class="sidebar-item-name">
                                 {{ item.name }}
                             </div>
+
+                            <icon :is="icons[item.icon]" v-if="item.icon" class="sidebar-item-icon" />
                         </div>
                     </div>
                 </div>
@@ -52,11 +46,17 @@
 
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api'
+import { createNamespacedHelpers } from 'vuex-composition-helpers'
 
 import MenuIcon from '@/static/icons/menu.svg'
 import BulbIcon from '@/static/icons/bulb.svg'
 import HomeIcon from '@/static/icons/home.svg'
 import TaxIcon from '@/static/icons/tax.svg'
+import ItemsIcon from '@/static/icons/items.svg'
+import WalletIcon from '@/static/icons/wallet.svg'
+import MoneyIcon from '@/static/icons/monetization.svg'
+
+const { useActions: uiActions } = createNamespacedHelpers('ui')
 
 export default defineComponent({
     components: { MenuIcon, BulbIcon },
@@ -68,10 +68,14 @@ export default defineComponent({
     setup(_, { root: { $router, $accessor, $api } }) {
         const isExpanded = computed(() => $accessor.ui.isExpanded)
         const isDarkMode = computed(() => $accessor.ui.isDarkMode)
+        const { setDarkMode, setExpand } = uiActions(['setDarkMode', 'setExpand'])
 
         const icons = computed(() => ({
             home: HomeIcon,
-            tax: TaxIcon
+            tax: TaxIcon,
+            wallet: WalletIcon,
+            items: ItemsIcon,
+            money: MoneyIcon
         }))
 
         function pushTo(routeName: string) {
@@ -83,21 +87,24 @@ export default defineComponent({
             console.log(val)
         })
 
+        function toggleExpand() {
+            setExpand(!isExpanded.value)
+        }
+        function changeTheme() {
+            setDarkMode(!isDarkMode.value)
+        }
+
         return {
             icons,
             pushTo,
             isExpanded,
+            toggleExpand,
+            changeTheme,
             isDarkMode
         }
     },
 
     methods: {
-        toggleExpand() {
-            this.$accessor.ui.setExpand(!this.isExpanded)
-        },
-        toggleLayout() {
-            this.$accessor.ui.setDarkMode(!this.isDarkMode)
-        },
         isItemActive(route: string) {
             return this.$route.path === route
         }
@@ -107,13 +114,13 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .sidebar {
-    border-radius: 0 20px 20px 0;
-    color: var(--sidebar-section);
+    color: var(--primary-text);
     width: $sidebar-tiny-width;
     height: 100vh;
     position: fixed;
     z-index: 999;
-    background-color: var(--sidebar-background);
+    background: var(--main-background);
+    border-right: 3px solid var(--green);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.349);
     transition: $ease-out;
     cursor: initial;
@@ -123,102 +130,72 @@ export default defineComponent({
         display: flex;
         flex-direction: column;
         overflow: hidden;
+        padding: 0 14px;
 
-        .sidebar-menu {
-            padding: 16px;
-            height: 60px;
+        .sidebar-logo {
+            width: 100%;
+            margin: 30px 0 100px;
+            display: grid;
+            place-items: center;
 
-            &-toggle {
-                display: grid;
-                place-items: center;
-            }
-
-            &-icon {
-                min-width: 20px !important;
-                width: 20px !important;
-                height: 20px;
-                margin-left: 2px;
-                fill: var(--sidebar-section);
-                fill-rule: evenodd;
-                clip-rule: evenodd;
-                cursor: pointer;
-
-                &.--is-dark {
-                    fill-rule: initial;
-                    clip-rule: initial;
-                }
-            }
-        }
-
-        .sidebar-section {
-            font-weight: 800px;
-            font-size: 20px;
-            margin: 32px 0 16px;
-            transition: $ease-out;
-            padding: 8px 20px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-
-            &-title {
-                padding-left: 16px;
-                opacity: 0;
-                color: var(--sidebar-item);
-            }
-
-            &-icon {
-                min-width: 20px !important;
-                width: 20px !important;
-                height: 20px;
-                fill: var(--sidebar-item);
-                stroke: var(--sidebar-item);
-                fill-rule: evenodd;
-                clip-rule: evenodd;
+            &-img {
+                width: 90%;
             }
         }
 
         .sidebar-item, .sidebar-section {
+            font-weight: 800px;
+            font-size: 20px;
+            padding: 8px 20px;
+            opacity: .6;
+            cursor: pointer;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
             &:hover {
-                background-color: var(--sidebar-hover);
+                opacity: 1;
+                box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
             }
 
             &.--is-active {
-                color: #fff;
-                background-color: var(--sidebar-selected);
-                border-left: 3px solid #fff;
+                opacity: 1;
+            }
+        }
+
+        .sidebar-section {
+            margin: 32px 0 16px;
+            transition: $ease-out;
+
+            &-title {
+                opacity: 0;
+            }
+
+            &-icon {
+                width: 26px;
+                height: 26px;
+                fill: var(--green);
+                fill-rule: evenodd;
+                clip-rule: evenodd;
             }
         }
 
         .sidebar-item {
-            display: flex;
-            margin-top: 4px;
-            align-items: center;
-            padding: 8px 30px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: 0.2s;
+            margin: 8px 0;
 
             &-icon {
-                min-width: 20px !important;
-                width: 20px !important;
-                height: 20px;
-                margin-left: 2px;
-                fill: var(--sidebar-item);
-                stroke: var(--sidebar-item);
+                width: 28px;
+                height: 28px;
+                fill: var(--green);
                 fill-rule: evenodd;
                 clip-rule: evenodd;
             }
 
             &-name {
-                padding-left: 16px;
+                padding-left: 10px;
                 opacity: 0;
-                max-height: 22px;
-                color: var(--sidebar-item);
             }
-        }
-
-        .sidebar-language {
-            justify-content: center;
         }
     }
 
