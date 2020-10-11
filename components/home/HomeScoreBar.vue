@@ -1,6 +1,6 @@
 <template>
-    <div class="scorebar-container">
-        <div class="scorebar" :style="{ 'width': width }" />
+    <div class="home-score">
+        <div class="home-scorebar" :style="{ 'width': width }" />
     </div>
 </template>
 
@@ -15,16 +15,16 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.scorebar-container {
-    background: rgb(170, 170, 170);
+.home-score {
+    background: #dfdfdf;
     border-radius: 10px;
     width: 100%;
-    height: 10px;
+    height: 40px;
 
-    .scorebar {
-        height: 10px;
+    &bar {
+        height: 40px;
         border-radius: 10px;
-        background: rgb(59, 90, 59);
+        background: var(--green);
     }
 }
 </style>

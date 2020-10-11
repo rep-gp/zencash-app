@@ -1,6 +1,9 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
 
+// var rootfirebase = require('firebase');
+// var firebaseui = require('firebaseui');
+
 type FBEvent = (
     a: firebase.database.DataSnapshot,
     b?: string | null | undefined
@@ -26,6 +29,7 @@ if (!firebase.apps.length) {
 
 export class Service {
     public static db = firebase.database()
+    // public static auth = firebase.auth
 
     public static async fetchData(query: String): Promise<any> {
         try {
@@ -40,6 +44,13 @@ export class Service {
 
     public static listenData(path: string, callback: FBEvent): any {
         return snapshotToArray(Service.db.ref(path).on('value', callback))
+    }
+
+    public static teste(): any {
+        // return Service.auth
+        // firebase.auth().onAuthStateChanged((user) => {
+        // console.log(user)
+        // })
     }
 }
 

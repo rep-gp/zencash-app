@@ -21,6 +21,7 @@ export default {
         ],
         link: [
             // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Nunito&display=swap' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
         ]
@@ -63,6 +64,15 @@ export default {
             './assets/main.scss',
             './assets/colors.scss'
         ]
+    },
+
+    auth: {
+        persistence: 'local', // default
+        initialize: {
+            onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
+            onAuthStateChangedAction: 'onAuthStateChangedAction'
+        },
+        ssr: false // default
     },
 
     // Build Configuration (https://go.nuxtjs.dev/config-build)

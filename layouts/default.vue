@@ -31,12 +31,14 @@ export default defineComponent({
                     section: 'Caixa',
                     routeName: 'cash',
                     route: '/cash',
+                    icon: 'wallet',
                     items: []
                 },
                 {
                     section: 'Gastos',
                     routeName: 'expenses',
                     route: '/expenses',
+                    icon: 'items',
                     items: [
                         {
                             name: 'Impostos',
@@ -60,6 +62,10 @@ export default defineComponent({
 <style lang="scss">
 :root {
     --main-color: #{$main-color--light};
+    --primary-text: #{$primary-text--light};
+    --gray: #{$gray--light};
+    --green: #{$green--light};
+    --orange: #{$orange--light};
 
     // background
     --main-background: #{$main-background--light};
@@ -75,6 +81,7 @@ export default defineComponent({
 }
 .dark {
     --main-color: #{$main-color--dark};
+    --primary-text: #{$main-text--dark};
 
     // background
     --main-background: #{$main-background--dark};
@@ -88,9 +95,9 @@ export default defineComponent({
     --sidebar-hover: #{$sidebar-hover--dark};
     --sidebar-selected: #{$sidebar-selected--dark};
 }
-
 html {
-    font-family: Roboto,
+    font-family: Barlow,
+        Roboto,
         'Source Sans Pro',
         -apple-system,
         BlinkMacSystemFont,
