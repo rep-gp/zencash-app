@@ -1,6 +1,6 @@
 <template>
-    <div class="home-page">
-        <h1>Home Page</h1>
+    <div class="imposto">
+        <h1>Imposto</h1>
     </div>
 </template>
 
@@ -10,13 +10,12 @@ import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
 
 })
-
 </script>
 
 <style lang="scss" scoped>
-.home-page {
+.imposto {
     h1 {
-        color: black;
+        font-size: 40px;
     }
 }
 </style>

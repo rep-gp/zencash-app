@@ -32,23 +32,25 @@ export default defineComponent({
                     ]
                 },
                 {
-                    section: 'caixa', // this.$t('sidebar.userSection'),
+                    // section: 'caixa',
                     items: [
-                        // {
-                        //     name: this.$t('sidebar.brandAnalysis'),
-                        //     icon: 'badge',
-                        //     route: '/brand/analysis',
-                        //     routeName: 'brand-analysis'
-                        // }
+                        {
+                            name: 'Caixa',
+                            icon: '',
+                            route: '/cash',
+                            routeName: 'cash'
+                        }
                     ]
-                }, {
-                    section: 'gastos',
+                },
+                {
+                    section: 'Gastos',
+                    routeName: 'expenses',
                     items: [
                         {
                             name: 'impostos',
                             icon: '',
-                            route: '/gastos/imposto',
-                            routeName: 'imposto'
+                            route: '/expenses/taxes',
+                            routeName: 'taxes'
                         }
                     ]
                 }]
@@ -84,7 +86,7 @@ html {
     box-sizing: border-box;
     scroll-behavior: smooth;
     color: #202020;
-    background-color: #f3fff5;
+    background-color: #f9fffb;
 }
 
 *,

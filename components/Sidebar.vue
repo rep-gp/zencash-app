@@ -3,10 +3,14 @@
         <div class="sidebar-items">
             <div class="sidebar-menu">
                 <div class="sidebar-menu-toggle" @click="toggleExpand">
-                    3
+                    <menu-icon class="sidebar-menu-toggle-icon"/>
                 </div>
-                MENU
-                <div class="sidebar-menu-toggle" @click="toggleLayout">
+
+                <div v-if="isExpanded" class="sidebar-menu-text">
+                    MENU
+                </div>
+
+                <div v-if="isExpanded" class="sidebar-menu-bulb" @click="toggleLayout">
                     bulb
                 </div>
             </div>
@@ -38,37 +42,41 @@
 </template>
 
 <script lang="ts">
-import { mapState, mapActions } from 'vuex'
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, computed } from '@vue/composition-api'
 
+import MenuIcon from '@/static/icons/menu.svg'
 import HomeIcon from '@/static/icons/home.svg'
 
 export default defineComponent({
+    components: { MenuIcon },
+
     props: {
         items: { type: Array, default: (): [] => [] }
     },
 
-    computed: {
-        ...mapState('ui', ['isExpanded']),
-        icons () {
-            return {
-                // tag: TagIcon,
-                // badge: BadgeIcon,
-                // setup: SetupIcon,
-                // cart: CartIcon,
-                // comment: CommentIcon,
-                // hash: HashIcon,
-                home: HomeIcon
-            }
+    setup (_, { root: { $router, $accessor } }) {
+        const isExpanded = computed(() => $accessor.ui.isExpanded)
+
+        const icons = computed(() => ({
+            home: HomeIcon
+        }))
+
+        function pushTo (routeName: string) {
+            $router.push({ name: routeName })
+        }
+
+        return {
+            icons,
+            pushTo,
+            isExpanded
+            // toggleExpand
         }
     },
 
     methods: {
-        ...mapActions('ui', ['setExpand']),
         toggleExpand () {
-            console.log(this.isExpanded, '@@@@@')
-            // this.setExpand(!this.isExpanded.value)
-        },
+            this.$accessor.ui.setExpand(!this.isExpanded)
+        }
         toggleLayout () {
             console.log('THEME')
         },
@@ -94,7 +102,7 @@ $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
     height: 100vh;
     position: fixed;
     z-index: 999;
-    background-color: #fff;
+    background-color: rgb(74, 116, 88);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.349);
     transition: $ease-out;
     cursor: initial;
@@ -106,18 +114,25 @@ $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
         overflow: hidden;
 
         .sidebar-menu {
-            display: flex;
-            justify-content: space-between;
+            // display: flex;
+            // justify-content: center;
+
+            // &-bulb, &-text { opacity: 0; visibility: hidden; }
 
             &-toggle {
                 cursor: pointer;
 
-                // &-icon {
-                //     object-fit: contain;
-                //     height: 50%;
-                //     margin-top: 16px;
-                //     transition: $ease-in;
-                // }
+                &-icon {
+                    border: 1px solid red;
+                    min-width: 20px !important;
+                    width: 20px !important;
+                    height: 20px;
+                    margin-left: 2px;
+                    fill: #fff;
+                    stroke: #fff;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                }
             }
         }
 
@@ -183,6 +198,16 @@ $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
         .sidebar-section-title {
             opacity: 1;
             transition: $ease-in 0.12s;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            justify-content: space-between;
+
+            // &-bulb, &-text {
+                // opacity: 1;  visibility: vi/sible;
+                // transition: $ease-in 0.6s;
+            // }
         }
 
         .sidebar-item-name {

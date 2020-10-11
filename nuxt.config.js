@@ -4,14 +4,16 @@ export default {
 
     // Global page headers (https://go.nuxtjs.dev/config-head)
     head: {
-        title: 'dashboard-app',
+        title: 'Hackathon Dashboard App',
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { hid: 'description', name: 'description', content: '' }
         ],
         link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+            // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Nunito&display=swap' },
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
         ]
     },
 
@@ -21,6 +23,7 @@ export default {
 
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
     plugins: [
+        '~/plugins/apexcharts.ts',
         '~/plugins/composition-api.ts'
     ],
 
@@ -30,6 +33,7 @@ export default {
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [
     // https://go.nuxtjs.dev/typescript
+        '@nuxtjs/eslint-module',
         '@nuxt/typescript-build',
         'nuxt-typed-vuex'
     ],
