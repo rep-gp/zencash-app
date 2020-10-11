@@ -17,7 +17,10 @@
 
             <div v-if="true">
                 <div v-for="(section,index) in items" :key="index">
-                    <h4 class="sidebar-section-title" @click="pushTo(section.routeName)">
+                    <h4
+                        :class="['sidebar-section-title', {'--is-active': isItemActive(section.route)}]"
+                        @click="pushTo(section.routeName)"
+                    >
                         {{ section.section }}
                     </h4>
 
@@ -92,7 +95,7 @@ export default defineComponent({
             this.$accessor.ui.setDarkMode(!this.isDarkMode)
         },
         isItemActive(route: string) {
-            return this.$route.path.includes(route)
+            return this.$route.path === route
         }
     }
 })
@@ -109,6 +112,7 @@ $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
 $sidebar-text-color: #abd6ab;
 
 .sidebar {
+    border-radius: 0 20px 20px 0;
     padding: 16px;
     color: $sidebar-text-color;
     width: $sidebar-tiny-width;
@@ -127,9 +131,10 @@ $sidebar-text-color: #abd6ab;
         overflow: hidden;
 
         .sidebar-menu {
-            // display: flex;
-            // justify-content: center;
-
+            &-toggle {
+                display: grid;
+                place-items: center;
+            }
             &-icon {
                 min-width: 20px !important;
                 width: 20px !important;
@@ -138,39 +143,51 @@ $sidebar-text-color: #abd6ab;
                 fill: $sidebar-text-color;
                 fill-rule: evenodd;
                 clip-rule: evenodd;
+                cursor: pointer;
 
                 &.--is-dark {
                     fill-rule: initial;
                     clip-rule: initial;
                 }
             }
-
-            &-toggle {
-                cursor: pointer;
-            }
         }
 
         .sidebar-section-title {
             font-weight: 800px;
             font-size: 18px;
-            margin-bottom: 16px;
-            margin-top: 32px;
+            // margin-bottom: 16px;
+            margin: 32px 0 16px;
             opacity: 0;
             transition: $ease-out;
             overflow: hidden;
-            max-height: 24px;
+            // max-height: 24px;
+            padding: 8px;
+            overflow: hidden;
+            border-radius: 4px;
             cursor: pointer;
+
+            &.--is-active {
+                background-color: #000;//$sidebar-select;
+            }
+
+            &:hover {
+                background-color: rgb(46, 83, 46);
+            }
         }
 
         .sidebar-item {
             display: flex;
-            margin-bottom: 4px;
+            margin-top: 4px;
             align-items: center;
             padding: 8px;
             overflow: hidden;
             border-radius: 4px;
             cursor: pointer;
             transition: 0.2s;
+
+            &:hover {
+                background-color: rgb(46, 83, 46);
+            }
 
             &-icon {
                 min-width: 20px !important;

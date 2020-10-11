@@ -23,16 +23,19 @@ export default defineComponent({
                 {
                     section: 'Home',
                     routeName: 'index',
+                    route: '/',
                     items: []
                 },
                 {
                     section: 'Caixa',
                     routeName: 'cash',
+                    route: '/cash',
                     items: []
                 },
                 {
                     section: 'Gastos',
                     routeName: 'expenses',
+                    route: '/expenses',
                     items: [
                         {
                             name: 'Impostos',
@@ -62,7 +65,7 @@ $sidebar-width: 250px;
 $sidebar-tiny-width: 72px;
 
 html {
-    font-family: 'Nunito',
+    font-family: Roboto,
         'Source Sans Pro',
         -apple-system,
         BlinkMacSystemFont,
