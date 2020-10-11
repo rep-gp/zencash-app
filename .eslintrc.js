@@ -14,6 +14,7 @@ module.exports = {
         'vue/html-indent': ['error', 4],
         'vue/script-indent': ['error', 4],
         indent: ['error', 4],
-        'no-console': 'off'
+        'no-console': 'off',
+        'space-before-function-paren': ['error', 'never']
     }
 }
