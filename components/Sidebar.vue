@@ -3,7 +3,7 @@
         <div class="sidebar-items">
             <div class="sidebar-menu">
                 <div class="sidebar-menu-toggle" @click="toggleExpand">
-                    <menu-icon class="sidebar-menu-toggle-icon" />
+                    <menu-icon class="sidebar-menu-icon" />
                 </div>
 
                 <div v-if="isExpanded" class="sidebar-menu-text">
@@ -11,26 +11,28 @@
                 </div>
 
                 <div v-if="isExpanded" class="sidebar-menu-bulb" @click="toggleLayout">
-                    bulb
+                    <bulb-icon :class="['sidebar-menu-icon', {'--is-dark': isDarkMode}]" />
                 </div>
             </div>
 
             <div v-if="true">
                 <div v-for="(section,index) in items" :key="index">
-                    <h4 v-if="section.items.length" class="sidebar-section-title">
+                    <h4 class="sidebar-section-title" @click="pushTo(section.routeName)">
                         {{ section.section }}
                     </h4>
 
-                    <div
-                        v-for="item in section.items"
-                        :key="item.route"
-                        :class="['sidebar-item', {'--is-active': isItemActive(item.route)}]"
-                        @click="pushTo(item.routeName, item.name)"
-                    >
-                        <!-- <icon :is="icons[item.icon]" v-if="item.icon" class="sidebar-item-icon" /> -->
+                    <div v-if="section.items.length">
+                        <div
+                            v-for="item in section.items"
+                            :key="item.route"
+                            :class="['sidebar-item', {'--is-active': isItemActive(item.route)}]"
+                            @click="pushTo(item.routeName)"
+                        >
+                            <icon :is="icons[item.icon]" v-if="item.icon" class="sidebar-item-icon" />
 
-                        <div class="sidebar-item-name">
-                            {{ item.name }}
+                            <div class="sidebar-item-name">
+                                {{ item.name }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,10 +47,12 @@
 import { defineComponent, computed } from '@vue/composition-api'
 
 import MenuIcon from '@/static/icons/menu.svg'
+import BulbIcon from '@/static/icons/bulb.svg'
 import HomeIcon from '@/static/icons/home.svg'
+import TaxIcon from '@/static/icons/tax.svg'
 
 export default defineComponent({
-    components: { MenuIcon },
+    components: { MenuIcon, BulbIcon },
 
     props: {
         items: { type: Array, default: (): [] => [] }
@@ -56,9 +60,11 @@ export default defineComponent({
 
     setup(_, { root: { $router, $accessor, $api } }) {
         const isExpanded = computed(() => $accessor.ui.isExpanded)
+        const isDarkMode = computed(() => $accessor.ui.isDarkMode)
 
         const icons = computed(() => ({
-            home: HomeIcon
+            home: HomeIcon,
+            tax: TaxIcon
         }))
 
         function pushTo(routeName: string) {
@@ -73,17 +79,17 @@ export default defineComponent({
         return {
             icons,
             pushTo,
-            isExpanded
-            // toggleExpand
+            isExpanded,
+            isDarkMode
         }
     },
 
     methods: {
         toggleExpand() {
-            // this.$accessor.ui.setExpand(!this.isExpanded)
+            this.$accessor.ui.setExpand(!this.isExpanded)
         },
         toggleLayout() {
-            console.log('THEME')
+            this.$accessor.ui.setDarkMode(!this.isDarkMode)
         },
         isItemActive(route: string) {
             return this.$route.path.includes(route)
@@ -100,9 +106,11 @@ $sidebar-transition-duration: 250ms;
 $ease-in: cubic-bezier(0.445, 0.05, 0.55, 0.95) $sidebar-transition-duration;
 $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
 
+$sidebar-text-color: #abd6ab;
+
 .sidebar {
     padding: 16px;
-    color: #abd6ab;
+    color: $sidebar-text-color;
     width: $sidebar-tiny-width;
     height: 100vh;
     position: fixed;
@@ -122,22 +130,23 @@ $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
             // display: flex;
             // justify-content: center;
 
-            // &-bulb, &-text { opacity: 0; visibility: hidden; }
+            &-icon {
+                min-width: 20px !important;
+                width: 20px !important;
+                height: 20px;
+                margin-left: 2px;
+                fill: $sidebar-text-color;
+                fill-rule: evenodd;
+                clip-rule: evenodd;
+
+                &.--is-dark {
+                    fill-rule: initial;
+                    clip-rule: initial;
+                }
+            }
 
             &-toggle {
                 cursor: pointer;
-
-                &-icon {
-                    border: 1px solid red;
-                    min-width: 20px !important;
-                    width: 20px !important;
-                    height: 20px;
-                    margin-left: 2px;
-                    fill: #fff;
-                    stroke: #fff;
-                    fill-rule: evenodd;
-                    clip-rule: evenodd;
-                }
             }
         }
 
@@ -150,6 +159,7 @@ $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
             transition: $ease-out;
             overflow: hidden;
             max-height: 24px;
+            cursor: pointer;
         }
 
         .sidebar-item {

@@ -21,36 +21,30 @@ export default defineComponent({
         items() {
             return [
                 {
-                    section: '',
-                    items: [
-                        {
-                            name: 'Home',
-                            icon: '',
-                            route: '/',
-                            routeName: 'index'
-                        }
-                    ]
+                    section: 'Home',
+                    routeName: 'index',
+                    items: []
                 },
                 {
-                    // section: 'caixa',
-                    items: [
-                        {
-                            name: 'Caixa',
-                            icon: '',
-                            route: '/cash',
-                            routeName: 'cash'
-                        }
-                    ]
+                    section: 'Caixa',
+                    routeName: 'cash',
+                    items: []
                 },
                 {
                     section: 'Gastos',
                     routeName: 'expenses',
                     items: [
                         {
-                            name: 'impostos',
-                            icon: '',
+                            name: 'Impostos',
+                            icon: 'tax',
                             route: '/expenses/taxes',
-                            routeName: 'taxes'
+                            routeName: 'expenses-taxes'
+                        },
+                        {
+                            name: 'Funcionários',
+                            // icon: 'tax',
+                            route: '/expenses/employees',
+                            routeName: 'expenses-employees'
                         }
                     ]
                 }]

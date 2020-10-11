@@ -1,5 +1,5 @@
 <template>
-    <div class="imposto">
+    <div class="taxes-page">
         <h1>Imposto</h1>
     </div>
 </template>
@@ -8,12 +8,12 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-
+    // setup(_, { root: { $route } }) {}
 })
 </script>
 
 <style lang="scss" scoped>
-.imposto {
+.taxes-page {
     h1 {
         font-size: 40px;
     }
