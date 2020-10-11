@@ -1,25 +1,22 @@
 <template>
-    <div class="home-page">
-        <h1>Home Page</h1>
+    <div class="employees-page">
+        <h1>Funcionários</h1>
     </div>
 </template>
 
-<script >
-
+<script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    async asyncData({ $api }) {
-        const data = await $api.fetchData('companies/')
-
-        return { data }
+    name: 'taxes',
+    setup(_, { root: { $route } }) {
+        console.log($route)
     }
 })
-
 </script>
 
 <style lang="scss" scoped>
-.home-page {
+.employees-page {
     h1 {
         font-size: 40px;
     }
