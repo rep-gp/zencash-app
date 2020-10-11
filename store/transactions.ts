@@ -22,8 +22,8 @@ export const actions: ActionTree<State, State> = {
         Service.listenData('companies/0/transactions', (snap) => {
             const data = snap.val()
 
-            if (data.gains) {
-                Object.values(data.gains).map((element: any) => {
+            if (data) {
+                Object.values(data).map((element: any) => {
                     element.map((transaction: any) => {
                         transaction.payment_date = moment(transaction.payment_date).isSame(new Date(), 'day')
                             ? transaction.payment_date = 'Today'

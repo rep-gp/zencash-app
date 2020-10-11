@@ -1,15 +1,14 @@
 <template>
-    <div class="transactions_container">
-        <div class="title">
-            Latest Gains
-        </div>
-
-        <div class="transactions_content">
-            <div v-if="!transactions.gains">
-                Nenhuma transação para mostrar
-            </div>
-            <div v-if="transactions.gains">
-                <TransactionRow v-for="(transaction, idx) in transactions.gains.jan" :key="idx" :transaction="transaction" />
+    <div class="container">
+        <div class="transactions_container">
+            <TransactionHeader class="transaction_header" />
+            <div class="transactions_content">
+                <div v-if="!transactions">
+                    Nenhuma transação para mostrar
+                </div>
+                <div v-if="transactions">
+                    <TransactionRow v-for="(transaction, idx) in transactions.jan" :key="idx" :transaction="transaction" />
+                </div>
             </div>
         </div>
     </div>
@@ -23,7 +22,6 @@ export default defineComponent({
 
     setup(_, { root: { $accessor } }) {
         $accessor.transactions.setTransactions()
-
         return { transactions: computed(() => $accessor.transactions.transactions) }
     }
 })
@@ -35,19 +33,19 @@ export default defineComponent({
         flex-direction: column;
         align-items: center;
         background-color: #e6e6e6;
-        border-radius: 15px;
-        max-width: 40%;
+        border-radius: 5px;
+        width: 70%;
         height: 60vh;
-    }
-
-    .title {
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin: 2% 0% 1% 0%
+        background-color: white;
+        overflow-x: hidden;
     }
 
     .transactions_content {
+        justify-content: center;
+        align-items: center;
         flex: 1;
-        width: 100%
+        width: 100%;
+        overflow-y: auto;
+        margin-top: 10px;
     }
 </style>

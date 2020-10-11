@@ -59,8 +59,12 @@ export default defineComponent({
 
 <style lang="scss">
 :root {
-    --main-background: #{$main-background--light};
     --main-color: #{$main-color--light};
+
+    // background
+    --main-background: #{$main-background--light};
+    --secondary-background: #{$secondary-background--light};
+    --tertiary-background: #{$tertiary-background--light};
 
     // sidebar light colors
     --sidebar-background: #{$sidebar-background--light};
@@ -70,8 +74,12 @@ export default defineComponent({
     --sidebar-selected: #{$sidebar-selected--light};
 }
 .dark {
-    --main-background: #{$main-background--dark};
     --main-color: #{$main-color--dark};
+
+    // background
+    --main-background: #{$main-background--dark};
+    --secondary-background: #{$secondary-background--dark};
+    --tertiary-background: #{$tertiary-background--dark};
 
     // sidebar dark colors
     --sidebar-background: #{$sidebar-background--dark};
