@@ -1,7 +1,10 @@
 <template>
     <div class="transaction_row">
         <div class="column type">
-            <span>{{ transaction.type }}</span>
+            <typeIcons :is="typeIcons[String(transaction.type)]" v-if="transaction.type" class="column_icon" />
+            <span :style="`color: ${colorTransaction[String(transaction.type)]}`">
+                {{ transaction.type }}
+            </span>
         </div>
         <div class="column date">
             <span>{{ transaction.payment_date }}</span>
@@ -11,7 +14,7 @@
             <span>{{ transaction.value }}</span>
         </div>
         <div class="column method">
-            <paymentIcons :is="paymentIcons[String(transaction.payment_method).replace(' ', '_')]" v-if="transaction.payment_method" class="method_icon" />
+            <paymentIcons :is="paymentIcons[String(transaction.payment_method).replace(' ', '_')]" v-if="transaction.payment_method" class="column_icon" />
             <span>{{ transaction.payment_method }}</span>
         </div>
     </div>
@@ -34,18 +37,27 @@ export default defineComponent({
     },
 
     setup() {
-        const typeIcons = computed(() => ({
-            credit_card: GetnetIcon
-        }))
-
         const paymentIcons = computed(() => ({
             credit_card: GetnetIcon,
             money: MoneyIcon
         }))
 
+        const typeIcons = computed(() => ({
+            sell: MoneyIcon,
+            bill: MoneyIcon,
+            investiment: MoneyIcon
+        }))
+
+        const colorTransaction = computed(() => ({
+            sell: '#33E04D',
+            bill: '#E02F22',
+            investiment: '#3253FA'
+        }))
+
         return {
             paymentIcons,
-            typeIcons
+            typeIcons,
+            colorTransaction
         }
     }
 })
@@ -68,8 +80,8 @@ export default defineComponent({
     display: flex;
     flex: 1;
     justify-content: center;
-    padding-right: 4%;
-    padding-left: 4%;
+    padding-right: 5%;
+    padding-left: 5%;
 }
 
 .date{
@@ -77,6 +89,8 @@ export default defineComponent({
 }
 
 .type {
+    font-weight: 700;
+    font-size: 0.95rem
 }
 
 .method {
@@ -90,7 +104,7 @@ export default defineComponent({
     color: #535366;
 }
 
-.method_icon{
+.column_icon{
     height: 2.6vh;
     width: 2.6vh;
     margin-right: auto;

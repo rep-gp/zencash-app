@@ -34,7 +34,6 @@ export default defineComponent({
         align-items: center;
         background-color: #e6e6e6;
         border-radius: 5px;
-        width: 70%;
         height: 60vh;
         background-color: white;
         overflow-x: hidden;
