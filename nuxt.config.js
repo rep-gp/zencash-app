@@ -50,12 +50,20 @@ export default {
 
     // Modules (https://go.nuxtjs.dev/config-modules)
     modules: [
-        'nuxt-svg-loader'
-        // ['nuxt-vuex-localstorage', {
-        //     localStorage: ['foo', 'bar'],
-        //     sessionStorage: ['sfoo', 'sbar']
-        // }]
+        'nuxt-svg-loader',
+        '@nuxtjs/style-resources',
+        ['nuxt-vuex-localstorage', {
+            sessionStorage: ['ui']
+            // localStorage: ['']
+        }]
     ],
+
+    styleResources: {
+        scss: [
+            './assets/main.scss',
+            './assets/colors.scss'
+        ]
+    },
 
     // Build Configuration (https://go.nuxtjs.dev/config-build)
     build: {

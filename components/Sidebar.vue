@@ -17,8 +17,15 @@
 
             <div v-if="true">
                 <div v-for="(section,index) in items" :key="index">
-                    <h4 class="sidebar-section-title" @click="pushTo(section.routeName)">
-                        {{ section.section }}
+                    <h4
+                        :class="['sidebar-section', {'--is-active': isItemActive(section.route)}]"
+                        @click="pushTo(section.routeName)"
+                    >
+                        <icon :is="icons[section.icon]" v-if="section.icon" class="sidebar-section-icon" />
+
+                        <div class="sidebar-section-title">
+                            {{ section.section }}
+                        </div>
                     </h4>
 
                     <div v-if="section.items.length">
@@ -92,30 +99,21 @@ export default defineComponent({
             this.$accessor.ui.setDarkMode(!this.isDarkMode)
         },
         isItemActive(route: string) {
-            return this.$route.path.includes(route)
+            return this.$route.path === route
         }
     }
 })
 </script>
 
 <style lang="scss" scoped>
-$sidebar-width: 250px;
-$sidebar-tiny-width: 72px;
-
-$sidebar-transition-duration: 250ms;
-$ease-in: cubic-bezier(0.445, 0.05, 0.55, 0.95) $sidebar-transition-duration;
-$ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
-
-$sidebar-text-color: #abd6ab;
-
 .sidebar {
-    padding: 16px;
-    color: $sidebar-text-color;
+    border-radius: 0 20px 20px 0;
+    color: var(--sidebar-section);
     width: $sidebar-tiny-width;
     height: 100vh;
     position: fixed;
     z-index: 999;
-    background-color: rgb(74, 116, 88);
+    background-color: var(--sidebar-background);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.349);
     transition: $ease-out;
     cursor: initial;
@@ -127,48 +125,76 @@ $sidebar-text-color: #abd6ab;
         overflow: hidden;
 
         .sidebar-menu {
-            // display: flex;
-            // justify-content: center;
+            padding: 16px;
+            height: 60px;
+
+            &-toggle {
+                display: grid;
+                place-items: center;
+            }
 
             &-icon {
                 min-width: 20px !important;
                 width: 20px !important;
                 height: 20px;
                 margin-left: 2px;
-                fill: $sidebar-text-color;
+                fill: var(--sidebar-section);
                 fill-rule: evenodd;
                 clip-rule: evenodd;
+                cursor: pointer;
 
                 &.--is-dark {
                     fill-rule: initial;
                     clip-rule: initial;
                 }
             }
+        }
 
-            &-toggle {
-                cursor: pointer;
+        .sidebar-section {
+            font-weight: 800px;
+            font-size: 20px;
+            margin: 32px 0 16px;
+            transition: $ease-out;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &-title {
+                padding-left: 16px;
+                opacity: 0;
+                color: var(--sidebar-item);
+            }
+
+            &-icon {
+                min-width: 20px !important;
+                width: 20px !important;
+                height: 20px;
+                fill: var(--sidebar-item);
+                stroke: var(--sidebar-item);
+                fill-rule: evenodd;
+                clip-rule: evenodd;
             }
         }
 
-        .sidebar-section-title {
-            font-weight: 800px;
-            font-size: 18px;
-            margin-bottom: 16px;
-            margin-top: 32px;
-            opacity: 0;
-            transition: $ease-out;
-            overflow: hidden;
-            max-height: 24px;
-            cursor: pointer;
+        .sidebar-item, .sidebar-section {
+            &:hover {
+                background-color: var(--sidebar-hover);
+            }
+
+            &.--is-active {
+                color: #fff;
+                background-color: var(--sidebar-selected);
+                border-left: 3px solid #fff;
+            }
         }
 
         .sidebar-item {
             display: flex;
-            margin-bottom: 4px;
+            margin-top: 4px;
             align-items: center;
-            padding: 8px;
+            padding: 8px 30px;
             overflow: hidden;
-            border-radius: 4px;
             cursor: pointer;
             transition: 0.2s;
 
@@ -177,8 +203,8 @@ $sidebar-text-color: #abd6ab;
                 width: 20px !important;
                 height: 20px;
                 margin-left: 2px;
-                fill: #fff;
-                stroke: #fff;
+                fill: var(--sidebar-item);
+                stroke: var(--sidebar-item);
                 fill-rule: evenodd;
                 clip-rule: evenodd;
             }
@@ -187,17 +213,7 @@ $sidebar-text-color: #abd6ab;
                 padding-left: 16px;
                 opacity: 0;
                 max-height: 22px;
-                overflow: hidden;
-                color: #fff;
-            }
-
-            &.--is-active {
-                background-color: #000;//$sidebar-select;
-            }
-
-            &:hover {
-                // background-color: $sidebar-select-hover;
-                transition: 0.2s;
+                color: var(--sidebar-item);
             }
         }
 
@@ -218,16 +234,12 @@ $sidebar-text-color: #abd6ab;
         .sidebar-menu {
             display: flex;
             justify-content: space-between;
-
-            // &-bulb, &-text {
-                // opacity: 1;  visibility: vi/sible;
-                // transition: $ease-in 0.6s;
-            // }
+            align-items: center;
         }
 
         .sidebar-item-name {
-            max-height: 44px;
             opacity: 1;
+            max-height: 44px;
             transition: $ease-in 0.16s;
         }
     }
