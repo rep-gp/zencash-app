@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :class="[{'dark': isDarkMode}]">
         <sidebar :items="items" />
         <div :class="['main-container', {'--is-expanded': isExpanded}]">
             <nuxt />
@@ -16,23 +16,27 @@ import Sidebar from '@/components/Sidebar.vue'
 export default defineComponent({
     components: { Sidebar },
     computed: {
-        ...mapState('ui', ['isExpanded']),
+        ...mapState('ui', ['isExpanded', 'isDarkMode']),
 
         items() {
             return [
                 {
                     section: 'Home',
                     routeName: 'index',
+                    route: '/',
+                    icon: 'home',
                     items: []
                 },
                 {
                     section: 'Caixa',
                     routeName: 'cash',
+                    route: '/cash',
                     items: []
                 },
                 {
                     section: 'Gastos',
                     routeName: 'expenses',
+                    route: '/expenses',
                     items: [
                         {
                             name: 'Impostos',
@@ -54,15 +58,31 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-$sidebar-transition-duration: 250ms;
-$ease-in: cubic-bezier(0.445, 0.05, 0.55, 0.95) $sidebar-transition-duration;
-$ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
+:root {
+    --main-background: #{$main-background--light};
+    --main-color: #{$main-color--light};
 
-$sidebar-width: 250px;
-$sidebar-tiny-width: 72px;
+    // sidebar light colors
+    --sidebar-background: #{$sidebar-background--light};
+    --sidebar-item: #{$sidebar-item--light};
+    --sidebar-section: #{$sidebar-section--light};
+    --sidebar-hover: #{$sidebar-hover--light};
+    --sidebar-selected: #{$sidebar-selected--light};
+}
+.dark {
+    --main-background: #{$main-background--dark};
+    --main-color: #{$main-color--dark};
+
+    // sidebar dark colors
+    --sidebar-background: #{$sidebar-background--dark};
+    --sidebar-item: #{$sidebar-item--dark};
+    --sidebar-section: #{$sidebar-section--dark};
+    --sidebar-hover: #{$sidebar-hover--dark};
+    --sidebar-selected: #{$sidebar-selected--dark};
+}
 
 html {
-    font-family: 'Nunito',
+    font-family: Roboto,
         'Source Sans Pro',
         -apple-system,
         BlinkMacSystemFont,
@@ -79,8 +99,8 @@ html {
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    color: #202020;
-    background-color: #f9fffb;
+    // color: #202020;
+    // background-color: var(--main-background) !important;
 }
 
 *,
@@ -91,15 +111,14 @@ html {
 }
 
 .main-container {
-  padding: 32px 40px 32px ($sidebar-tiny-width + 32px);
-  transition: $ease-out;
+    padding: 32px 40px 32px ($sidebar-tiny-width + 32px);
+    transition: $ease-out;
+    background-color: var(--main-background);
+    color: var(--main-color);
 
     &.--is-expanded {
         padding-left: ($sidebar-width + 32px);
         transition: $ease-in;
-    }
-    &.--is-filter-open {
-        padding-right: ($sidebar-width + 32px);
     }
 }
 
