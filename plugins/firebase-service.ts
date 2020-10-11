@@ -17,7 +17,9 @@ const firebaseConfig = {
     measurementId: process.env.measurementId
 }
 
-firebase.initializeApp(firebaseConfig)
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig)
+}
 
 export class Service {
     public static db = firebase.database()
@@ -25,8 +27,6 @@ export class Service {
     public static async fetchData(query: String): Promise<any> {
         try {
             const Ref = await Service.db.ref(`${query}`).once('value')
-
-            // const response = await axios.get(Ref.toString() + '.json')
 
             return Ref
         } catch (e) {
@@ -41,7 +41,6 @@ export class Service {
 }
 
 export default (context: any, inject: any) => {
-    console.log(Service.fetchData('Companies/'))
     inject('api', Service)
     context.$api = Service
 }
