@@ -1,24 +1,11 @@
-// DEFAULT MODE
-// main
-$main-background--light: #f9fffb;
-$main-color--light: #202020;
+/** Default Mode */
+$main-background--light: #efefef;
+$primary-text--light: #727272;
+$green--light: #3CDA7D;
+$gray-light--light: #ADADAD;
+$orange--light: #DA883C;
 
-// sidebar
-$sidebar-background--light: rgb(74, 116, 88);
-$sidebar-section--light: #abd6ab;
-$sidebar-item--light: #fff;
-$sidebar-hover--light: rgb(107, 129, 107);
-$sidebar-selected--light: rgb(46, 83, 46);
-
-
-/** DARK MODE */
-// main
+/** Dark Mode */
 $main-background--dark: rgb(27, 27, 27);
-$main-color--dark: #f3f3f3;
-
-// sidebar
-$sidebar-background--dark: rgb(59, 80, 66);
-$sidebar-section--dark: #abd6ab;
-$sidebar-item--dark: #fff;
-$sidebar-hover--dark: rgb(107, 129, 107);
-$sidebar-selected--dark: rgb(46, 83, 46);
+$primary-text--dark: #f3f3f3;
+$green--dark: #3CDA7D;

@@ -1,20 +1,27 @@
 <template>
     <div class="home-page">
-        <h1>Zen Cash</h1>
+        <home-score :data="834" />
+        <home-cash :data="{ positive: 13004.123432, negative: 7419.043923}" />
 
-        <home-score />
     </div>
 </template>
 
 <script>
-
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    async asyncData({ $api }) {
+    async asyncData({ $api, $accessor }) {
         const data = await $api.fetchData('companies/')
 
-        return { data }
+        await $accessor.auth.authCheck()
+
+        await $accessor.users.fetchUsers()
+        const userList = $accessor.users.userList
+
+        return {
+            data,
+            userList
+        }
     }
 })
 

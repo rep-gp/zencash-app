@@ -1,14 +1,13 @@
 <template>
     <div class="home-score">
-        <header>
-            <h2> Índice de Crédito </h2>
-            <div class="score">
-                {{ data }} pontos
-                <span> /{{ maxScore }} </span>
-            </div>
-        </header>
+        <div class="home-score-card">
+            <h1>
+                {{ data }}
+                <div> pontos </div>
+            </h1>
+        </div>
 
-        <scorebar :width="percentage" />
+        <home-score-bar :width="percentage" />
     </div>
 </template>
 
@@ -17,7 +16,7 @@ import { computed, defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
     props: {
-        data: { type: Number, default: 900 }
+        data: { type: Number, default: 0 }
     },
     setup(props) {
         const maxScore = 1000
@@ -36,24 +35,28 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home-score {
-    & > header {
-        display: flex;
-        justify-content: space-between;
-        align-content: flex-end;
-        margin-bottom: 6px;
+    margin: 60px 0;
+    position: relative;
 
-        & > h2 {
-            margin-top: auto;
-            font-weight: initial;
-            font-size: 24px;
-            height: fit-content;
-            color: var(--main-color)
-        }
+    &-card {
+        position: absolute;
+        top: -50px;
+        left: 44%;
+        z-index: 10;
+        background: var(--main-background);
+        padding: 0 16px;
 
-        & > .score {
-            font-size: 36px;
-            & > span {
-                font-size: 24px;
+        & > h1 {
+            font-size: 90px;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+
+            & > div {
+                margin-top: -20px;
+                font-weight: 500;
+                font-size: 40px;
+                color: var(--gray-light);
             }
         }
     }
