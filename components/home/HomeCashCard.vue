@@ -26,7 +26,7 @@ export default defineComponent({
         value: { type: Number, default: 0 }
     },
 
-    setup() {
+    setup () {
         const icons = computed(() => ({
             up: UpIcon,
             down: DownIcon

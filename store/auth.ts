@@ -9,16 +9,16 @@ export const state = () => ({
 export type State = ReturnType<typeof state>
 
 export const mutations: MutationTree<State> = {
-    SET_USER_ID(state, id) {
+    SET_USER_ID (state, id) {
         state.userId = id
     }
 }
 
 export const actions: ActionTree<State, State> = {
-    setUserId({ commit }, id) {
+    setUserId ({ commit }, id) {
         commit('SET_USER_ID', id)
     },
-    async postCheck() {
+    async postCheck () {
         const params = {
             name: 'Teste',
             email: 'email@a.com',
@@ -28,7 +28,7 @@ export const actions: ActionTree<State, State> = {
 
         await this.$api.post('users/', params)
     },
-    login(_, payload: {}) {
+    login (_, payload: {}) {
         this.$api.login(payload)
     }
 }

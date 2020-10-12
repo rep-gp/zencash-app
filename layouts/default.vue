@@ -18,7 +18,7 @@ export default defineComponent({
     computed: {
         ...mapState('ui', ['isExpanded', 'isDarkMode']),
 
-        items() {
+        items () {
             return [
                 {
                     section: 'Home',
@@ -141,6 +141,12 @@ html {
     &.--is-expanded {
         padding-left: ($sidebar-width + 32px);
         transition: $ease-in;
+    }
+
+    h1 {
+        color: #555;
+        margin-bottom: 30px;
+        font-weight: 900;
     }
 }
 

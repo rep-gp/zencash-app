@@ -29,7 +29,7 @@ import { createNamespacedHelpers } from 'vuex-composition-helpers'
 const { useActions: authActions } = createNamespacedHelpers('auth')
 
 export default defineComponent({
-    setup() {
+    setup () {
         const { login } = authActions(['login'])
 
         return {
@@ -38,7 +38,7 @@ export default defineComponent({
             password: ''
         }
     },
-     method: {
+    method: {
         async login () {
             const { email, password } = this
 
@@ -47,7 +47,7 @@ export default defineComponent({
         logout () {
             this.$router.push('/')
         }
-     }
+    }
 })
 
 </script>

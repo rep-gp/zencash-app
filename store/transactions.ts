@@ -1,6 +1,7 @@
 import moment from 'moment'
 import { ActionTree, MutationTree } from 'vuex'
 import { formatter } from './utils'
+import { Service } from '~/service/Service'
 
 export const namespaced = true
 
@@ -11,14 +12,14 @@ export const state = () => ({
 export type State = ReturnType<typeof state>
 
 export const mutations: MutationTree<State> = {
-    SET_TRANSACTIONS(state, transactions) {
+    SET_TRANSACTIONS (state, transactions) {
         state.transactions = transactions
     }
 }
 
 export const actions: ActionTree<State, State> = {
-    setTransactions({ commit }) {
-        const data = this.$api.get('companies/0/transactions')
+    setTransactions ({ commit }) {
+        const data = Service.get('companies/0/transactions')
         if (!data) { return }
 
         const parsed = Object.values(data).map((element: any) => {

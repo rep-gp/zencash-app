@@ -8,14 +8,14 @@
             <div class="section-title">
                 Gains
             </div>
-            <SummaryRow v-for="data in transactionsData" :key="data" :data="data" />
+            <SummaryRow v-for="data in transactionsData" :key="JSON.stringify(data)" :data="data" />
         </div>
 
         <div class="section">
             <div class="section-title">
                 Gains
             </div>
-            <SummaryRow v-for="data in transactionsData" :key="data" :data="data" />
+            <SummaryRow v-for="data in transactionsData" :key="JSON.stringify(data)" :data="data" />
         </div>
         <div class="balance">
             <div class="balance-title">
@@ -33,7 +33,7 @@ import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
     name: 'Summary',
-    data() {
+    data () {
         const transactionsData = [
             { title: 'Total transactions received', value: 6 },
             { title: 'Sum of entries', value: 600 },
