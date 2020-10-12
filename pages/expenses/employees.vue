@@ -8,7 +8,7 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    name: 'taxes',
+    name: 'expensesEmplooyes',
     setup(_, { root: { $route } }) {
         console.log($route)
     }

@@ -1,8 +1,15 @@
 <template>
     <div :class="[{'dark': isDarkMode}]">
         <sidebar :items="items" />
+
         <div :class="['main-container', {'--is-expanded': isExpanded}]">
-            <nuxt />
+            <div v-if="token">
+                <nuxt />
+            </div>
+
+            <div v-else>
+                signin
+            </div>
         </div>
     </div>
 </template>
