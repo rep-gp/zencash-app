@@ -29,7 +29,7 @@ export const actions: ActionTree<State, State> = {
                 console.error(errorMessage)
             }
         })
-        this.$api.auth.onAuthStateChanged((_user: firebase.User) => {
+        this.$api.auth.onAuthStateChanged((_user: any) => {
             if (_user) {
                 AuthService.setUser(_user)
             } else {

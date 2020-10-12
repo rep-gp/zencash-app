@@ -9,7 +9,7 @@ export default defineComponent({
     },
     methods: {
         checkUser () {
-            this.$api.auth.onAuthStateChanged((user: firebase.User) => {
+            this.$api.auth.onAuthStateChanged((user: any) => {
                 if (user) {
                     AuthService.setUser(user)
                     this.$ls.set('token', user.uid)

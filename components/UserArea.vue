@@ -18,16 +18,16 @@
                     @keyup.enter="onLogin"
                 >
 
-                <btn class="user-submit" @click="onLogin">
+                <flat-button class="user-submit" @click="onLogin">
                     Login
-                </btn>
+                </flat-button>
             </form>
         </div>
 
         <div v-else>
-            <btn class="user-submit" @click="onLogout">
+            <flat-button class="user-submit" @click="onLogout">
                 Logout
-            </btn>
+            </flat-button>
         </div>
     </div>
 </template>
