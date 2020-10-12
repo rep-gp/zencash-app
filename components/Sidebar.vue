@@ -65,7 +65,7 @@ export default defineComponent({
         items: { type: Array, default: (): [] => [] }
     },
 
-    setup(_, { root: { $router, $accessor, $api } }) {
+    setup(_, { root: { $router, $accessor } }) {
         const isExpanded = computed(() => $accessor.ui.isExpanded)
         const isDarkMode = computed(() => $accessor.ui.isDarkMode)
         const { setDarkMode, setExpand } = uiActions(['setDarkMode', 'setExpand'])
@@ -82,10 +82,10 @@ export default defineComponent({
             $router.push({ name: routeName })
         }
 
-        $api.listenData('/companies', (snap) => {
-            const val = snap.toJSON()
-            console.log(val)
-        })
+        // $api.listenData('/companies', (snap) => {
+        //     const val = snap.toJSON()
+        //     console.log(val)
+        // })
 
         function toggleExpand() {
             setExpand(!isExpanded.value)
