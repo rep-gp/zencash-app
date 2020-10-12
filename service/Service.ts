@@ -13,8 +13,15 @@ export class Service {
         }
     }
 
+    public static logout() {
+        auth.signOut()
+    }
+
     public static login({ email, password }: any) {
-        auth.signInWithEmailAndPassword(email, password)
+        console.log({ email, password })
+        auth.signInWithEmailAndPassword(email, password).catch(
+            (error) => { console.error('ERRO', error, email, password) }
+        )
 
         auth.onAuthStateChanged((user) => {
             if (user) {

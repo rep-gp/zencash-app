@@ -2,6 +2,7 @@
     <div class="home-page">
         <home-score :data="834" />
         <home-cash :data="{ positive: 13004.123432, negative: 7419.043923}" />
+        <area-chart :data="[]" class="chart"/>
     </div>
 </template>
 
@@ -23,11 +24,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home-page {
-    min-height: 93.4vh;
+    padding: 0 50px;
 
-    h1 {
-        font-size: 50px;
-        margin-bottom: 10px;
+    .chart {
+        margin-top: 30px;
     }
 }
 </style>

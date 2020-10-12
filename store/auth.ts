@@ -3,7 +3,8 @@ import { ActionTree, MutationTree } from 'vuex'
 export const namespaced = true
 
 export const state = () => ({
-    userId: ''
+    userId: '',
+    user: null as unknown
 })
 
 export type State = ReturnType<typeof state>
@@ -28,7 +29,12 @@ export const actions: ActionTree<State, State> = {
 
         await this.$api.post('users/', params)
     },
+
     login(_, payload: {}) {
         this.$api.login(payload)
+    },
+
+    logout() {
+        this.$api.logout()
     }
 }

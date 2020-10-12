@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <!-- <login /> -->
+            <user-area  class="user"/>
         </div>
     </div>
 </template>
@@ -126,6 +126,10 @@ export default defineComponent({
         flex-direction: column;
         overflow: hidden;
         padding: 0 14px;
+        .user {
+            margin-top: auto;
+            margin-bottom: 40px;
+        }
 
         .sidebar-logo {
             width: 100%;
