@@ -53,6 +53,13 @@ export default defineComponent({
                             routeName: 'expenses-employees'
                         }
                     ]
+                },
+                {
+                    section: 'Configurações',
+                    routeName: 'configuration',
+                    route: '/configuration',
+                    icon: 'config',
+                    items: []
                 }]
         }
     }
@@ -126,7 +133,7 @@ html {
 }
 
 .main-container {
-    padding: 32px 40px 32px ($sidebar-tiny-width + 32px);
+    padding: 60px;
     transition: $ease-out;
     background-color: var(--main-background);
     color: var(--main-color);
