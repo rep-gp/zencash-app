@@ -90,8 +90,8 @@ export default defineComponent({
     flex: 1;
     justify-content: center;
     align-items: center;
-    padding-right: 3%;
-    padding-left: 3%;
+    padding-left: 2%;
+    padding-right: 1%;
     margin-right: 2%;
 }
 
@@ -104,6 +104,9 @@ export default defineComponent({
     font-weight: 700;
     font-size: 1.5vh;
     text-align: center;
+    padding-left: 2%;
+    padding-right: 0%;
+    justify-content: flex-start;
 }
 
 .type {
@@ -115,8 +118,8 @@ export default defineComponent({
 
 .method {
     text-transform: capitalize;
+    justify-content: flex-start;
     color: #535366;
-    align-self: center;
     font-size: 1.8vh;
 }
 
@@ -129,7 +132,7 @@ export default defineComponent({
 .column_icon{
     height: 2vh;
     width: 2vh;
-    margin-right: auto;
+    margin-right: 10%
 }
 
 .sell {
