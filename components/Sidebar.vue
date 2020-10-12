@@ -1,11 +1,11 @@
 <template>
-    <div :class="['sidebar', {'--is-expanded': isExpanded}]">
+    <div :key="token" :class="['sidebar', {'--is-expanded': isExpanded}]">
         <div class="sidebar-items">
             <div class="sidebar-logo">
                 <img src="@/static/logo.png" alt="ZenCash Logo" class="sidebar-logo-img">
             </div>
 
-            <div v-if="true">
+            <div v-if="token">
                 <div v-for="(section,index) in items" :key="index">
                     <h4
                         :class="['sidebar-section', {'--is-active': isItemActive(section.route)}]"
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <user-area  class="user"/>
+            <user-area :key="token" :class="['user', {'--no-user': !token}]" />
         </div>
     </div>
 </template>
@@ -126,10 +126,15 @@ export default defineComponent({
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        padding: 0 14px;
+        padding: 0 20px;
+
         .user {
-            margin-top: auto;
             margin-bottom: 40px;
+            margin-top: auto;
+
+            &.--no-user {
+                margin-top: 40px;
+            }
         }
 
         .sidebar-logo {

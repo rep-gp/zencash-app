@@ -1,13 +1,13 @@
 <template>
-    <div class="sidebar-login">
-        {{ user }}
-        <div v-if="!user">
-            <form @submit.prevent="login">
+    <div :key="token" class="sidebar-login">
+        <div v-if="!token">
+            <form @submit.prevent="onLogin">
                 <input
                     v-model="email"
                     class="login-input"
                     placeholder="Email"
                     type="text"
+                    @keyup.enter="onLogin"
                 >
 
                 <input
@@ -15,12 +15,12 @@
                     class="login-input"
                     placeholder="Password"
                     type="password"
+                    @keyup.enter="onLogin"
                 >
 
                 <btn class="user-submit" @click="onLogin">
                     Login
                 </btn>
-
             </form>
         </div>
 
@@ -33,14 +33,11 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import { defineComponent } from '@vue/composition-api'
+// import { AuthService } from '@/service/AuthService'
 
 export default defineComponent({
-    copmputed: {
-        ...mapState('auth', ['user'])
-    },
-
     data: () => ({
         email: '',
         password: ''
@@ -48,14 +45,16 @@ export default defineComponent({
 
     methods: {
         ...mapActions('auth', ['login', 'logout']),
-        onLogin() {
+        async onLogin() {
             const { email, password } = this
 
-            this.login({ email, password })
+            await this.login({ email, password })
+            this.checkUser()
         },
-        onLogout() {
-            this.logout()
-            this.$router.push('/')
+        async onLogout() {
+            console.log('logout')
+            await this.logout()
+            this.checkUser()
         }
     }
 })

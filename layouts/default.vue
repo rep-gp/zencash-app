@@ -7,17 +7,29 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+<script>
 import { mapState } from 'vuex'
+import { defineComponent } from '@vue/composition-api'
 
-import Sidebar from '@/components/Sidebar.vue'
+import { AuthService } from '@/service/AuthService'
 
 export default defineComponent({
-    components: { Sidebar },
+    asyncData({ $api }) {
+        $api.auth.onAuthStateChanged((user) => {
+            if (user) {
+                AuthService.setUser(user)
+                this.$ls.set('token', user.uid)
+                console.log('on by dlayout')
+            } else {
+                this.$router.push('/')
+                AuthService.setUser(null)
+                this.$ls.set('token', '')
+            }
+        })
+    },
+
     computed: {
         ...mapState('ui', ['isExpanded', 'isDarkMode']),
-
         items() {
             return [
                 {
@@ -60,7 +72,8 @@ export default defineComponent({
                     route: '/configuration',
                     icon: 'config',
                     items: []
-                }]
+                }
+            ]
         }
     }
 })

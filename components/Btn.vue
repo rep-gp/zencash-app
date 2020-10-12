@@ -1,5 +1,5 @@
 <template>
-    <div class="button" @click="handleClick" :style="{ opacity: !disabled }">
+    <div class="button" :style="{ opacity: !disabled }" @click="handleClick">
         <slot />
     </div>
 </template>

@@ -1,40 +1,52 @@
 import { ActionTree, MutationTree } from 'vuex'
+import { AuthService } from '@/service/AuthService'
 
 export const namespaced = true
 
 export const state = () => ({
-    userId: '',
-    user: null as unknown
+    // user: null as unknown
 })
 
 export type State = ReturnType<typeof state>
 
 export const mutations: MutationTree<State> = {
-    SET_USER_ID(state, id) {
-        state.userId = id
-    }
+    // SET_USER(state, data) {
+    //     state.user = data
+    // }
 }
 
 export const actions: ActionTree<State, State> = {
-    setUserId({ commit }, id) {
-        commit('SET_USER_ID', id)
-    },
-    async postCheck() {
-        const params = {
-            name: 'Teste',
-            email: 'email@a.com',
-            company_id: '0',
-            password: 'xpto'
-        }
+    // setUser({ commit }, data) {
+    //     commit('SET_USER', data)
+    // },
+    async login(_, { email, password }) {
+        await this.$api.auth.signInWithEmailAndPassword(email, password).catch((error) => {
+            const errorCode = error.code
+            const errorMessage = error.message
+            if (errorCode === 'auth/wrong-password') {
+                alert('Wrong password.')
+            } else {
+                console.error(errorMessage)
+            }
+        })
+        this.$api.auth.onAuthStateChanged((_user) => {
+            if (_user) {
+                AuthService.setUser(_user)
+            } else {
+                this.$router.push('/')
+                AuthService.setUser(null)
+            }
+        })
 
-        await this.$api.post('users/', params)
+        // dispatch('setUser', AuthService.user)
     },
 
-    login(_, payload: {}) {
-        this.$api.login(payload)
-    },
-
-    logout() {
-        this.$api.logout()
+    async logout() {
+        let error = false
+        await this.$api.auth.signOut()
+            .catch(() => {
+                error = true
+            })
+        return { error }
     }
 }

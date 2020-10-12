@@ -25,14 +25,14 @@ export default {
                 curve: 'smooth'
             },
             grid: { show: false },
-            colors: ['#000000BB', '#DA883CBB', '#3CDA7DBB'],
+            colors: ['#00000099', '#DA883C99', '#3CDA7D99'],
             fill: { type: 'solid' },
             dataLabels: { enabled: false },
             legend: { show: false },
             xaxis: {
                 categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                 labels: {
-                    style: { colors: '#999999' }
+                    style: { colors: '#777' }
                 }
             },
             yaxis: { show: false }
