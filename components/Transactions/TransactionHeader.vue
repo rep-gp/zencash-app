@@ -35,10 +35,7 @@ export default defineComponent({
     align-items: center;
     justify-content: space-around;
     margin: 0% 7% 0% 7%;
-
-    -webkit-box-shadow: 0px 4px 7px 3px rgba(196,184,196,1);
-    -moz-box-shadow: 0px 4px 7px 3px rgba(196,184,196,1);
-    box-shadow: 0px 4px 7px 3px rgba(196,184,196,1);
+    border-bottom: 1px solid var(--green);
 }
 
 .column {

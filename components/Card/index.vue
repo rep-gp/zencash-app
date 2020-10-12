@@ -46,9 +46,7 @@ export default defineComponent({
         background-color: white;
         border-radius: 5px;
 
-        -webkit-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
+        border: 1px solid var(--secondary-background)
     }
 
     .card-title {

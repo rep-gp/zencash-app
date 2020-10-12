@@ -38,9 +38,6 @@ export default defineComponent({
         background-color: white;
         overflow-x: hidden;
 
-        -webkit-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
     }
 
     .transactions_content {
