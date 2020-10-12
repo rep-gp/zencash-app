@@ -33,7 +33,7 @@ export default defineComponent({
 
     .card-title {
         font-weight: 600;
-        font-size: 2.3vh;
+        font-size: 2vh;
         color: #413f4d
     }
 

@@ -4,7 +4,7 @@
             {{ data.title }}
         </div>
         <div class="value">
-            {{ data.value }}
+            <span v-if="data.money">R$ </span>{{ data.value }}
         </div>
     </div>
 </template>

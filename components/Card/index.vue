@@ -5,7 +5,9 @@
         </div>
         <div class="card-value">
             <div>
-                {{ value }} <span v-if="total">
+                <span v-if="money">
+                    R$
+                </span> {{ value }} <span v-if="total">
                     / {{ total }}
                 </span>
             </div>
@@ -36,7 +38,8 @@ export default defineComponent({
         value: { type: Number, default: 0 },
         total: { type: Number },
         percentage: { type: Number, default: 0 },
-        type: { type: String, default: '' }
+        type: { type: String, default: '' },
+        money: { type: Boolean }
     }
 })
 </script>
@@ -51,7 +54,7 @@ export default defineComponent({
 
     .card-title {
         font-weight: 600;
-        font-size: 2vh;
+        font-size: 1.8vh;
         color: #413f4d
     }
 
