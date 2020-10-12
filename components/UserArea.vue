@@ -45,13 +45,13 @@ export default defineComponent({
 
     methods: {
         ...mapActions('auth', ['login', 'logout']),
-        async onLogin() {
+        async onLogin () {
             const { email, password } = this
 
             await this.login({ email, password })
             this.checkUser()
         },
-        async onLogout() {
+        async onLogout () {
             console.log('logout')
             await this.logout()
             this.checkUser()

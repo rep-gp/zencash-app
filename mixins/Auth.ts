@@ -3,13 +3,13 @@ import { AuthService } from '@/service/AuthService'
 
 export default defineComponent({
     computed: {
-        token() {
+        token () {
             return this.$ls.get('token')
         }
     },
     methods: {
-        checkUser() {
-            this.$api.auth.onAuthStateChanged((user) => {
+        checkUser () {
+            this.$api.auth.onAuthStateChanged((user: firebase.User) => {
                 if (user) {
                     AuthService.setUser(user)
                     this.$ls.set('token', user.uid)
