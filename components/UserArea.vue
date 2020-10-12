@@ -35,9 +35,6 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import { defineComponent } from '@vue/composition-api'
-// import { createNamespacedHelpers } from 'vuex-composition-helpers'
-
-// const { useActions: authActions } = createNamespacedHelpers('auth')
 
 export default defineComponent({
     copmputed: {

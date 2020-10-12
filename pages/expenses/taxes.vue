@@ -1,6 +1,6 @@
 <template>
     <div class="taxes-page">
-        <h1>Imposto</h1>
+        <h1>Impostos</h1>
     </div>
 </template>
 

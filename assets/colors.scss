@@ -1,14 +1,13 @@
 /** LIGHT MODE */
 // main
-$primary-background--light: #efefef;
+$primary-background--light: #fff;
+$primary-text--light: #202020;
 $green--light: #3CDA7D;
 $orange--light: #DA883C;
 $gray--light: #ADADAD;
 
-$primary-text--light: #202020;
-$secundary-text--light: #727272;
-
 // secondary
+$secundary-text--light: #727272;
 $secondary-background--light: #e6e6e6;
 $secondary-color--light: #202020;
 
@@ -16,18 +15,16 @@ $secondary-color--light: #202020;
 $tertiary-background--light: #CCCCCC;
 $tertiary-color--light: #202020;
 
-
 /** DARK MODE */
 // main
 $primary-background--dark: #202020;
+$primary-text--dark: #f3f3f3;
 $green--dark: #3CDA7D;
 $orange--dark: #DA883C;
 $gray--dark: #ADADAD;
 
-$primary-text--dark: #f3f3f3;
-// $secundary-text--dark: #727272;
-
 // secondary
+// $secundary-text--dark: #727272;
 $secondary-background--dark:#54695A;
 $secondary-color--dark: #202020;
 
