@@ -7,17 +7,29 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+<script>
 import { mapState } from 'vuex'
+import { defineComponent } from '@vue/composition-api'
 
-import Sidebar from '@/components/Sidebar.vue'
+import { AuthService } from '@/service/AuthService'
 
 export default defineComponent({
-    components: { Sidebar },
+    asyncData({ $api }) {
+        $api.auth.onAuthStateChanged((user) => {
+            if (user) {
+                AuthService.setUser(user)
+                this.$ls.set('token', user.uid)
+                console.log('on by dlayout')
+            } else {
+                this.$router.push('/')
+                AuthService.setUser(null)
+                this.$ls.set('token', '')
+            }
+        })
+    },
+
     computed: {
         ...mapState('ui', ['isExpanded', 'isDarkMode']),
-
         items() {
             return [
                 {
@@ -60,7 +72,8 @@ export default defineComponent({
                     route: '/configuration',
                     icon: 'config',
                     items: []
-                }]
+                }
+            ]
         }
     }
 })
@@ -68,39 +81,26 @@ export default defineComponent({
 
 <style lang="scss">
 :root {
-    --main-color: #{$main-color--light};
     --primary-text: #{$primary-text--light};
     --gray: #{$gray--light};
     --green: #{$green--light};
     --orange: #{$orange--light};
 
     // background
-    --main-background: #{$main-background--light};
+    --primary-background: #{$primary-background--light};
     --secondary-background: #{$secondary-background--light};
     --tertiary-background: #{$tertiary-background--light};
-
-    // sidebar light colors
-    --sidebar-background: #{$sidebar-background--light};
-    --sidebar-item: #{$sidebar-item--light};
-    --sidebar-section: #{$sidebar-section--light};
-    --sidebar-hover: #{$sidebar-hover--light};
-    --sidebar-selected: #{$sidebar-selected--light};
 }
 .dark {
-    --main-color: #{$main-color--dark};
-    --primary-text: #{$main-text--dark};
+    --primary-text: #{$primary-text--dark};
+    --gray: #{$gray--dark};
+    --green: #{$green--dark};
+    --orange: #{$orange--dark};
 
     // background
-    --main-background: #{$main-background--dark};
+    --primary-background: #{$primary-background--dark};
     --secondary-background: #{$secondary-background--dark};
     --tertiary-background: #{$tertiary-background--dark};
-
-    // sidebar dark colors
-    --sidebar-background: #{$sidebar-background--dark};
-    --sidebar-item: #{$sidebar-item--dark};
-    --sidebar-section: #{$sidebar-section--dark};
-    --sidebar-hover: #{$sidebar-hover--dark};
-    --sidebar-selected: #{$sidebar-selected--dark};
 }
 html {
     font-family: Barlow,
@@ -122,7 +122,7 @@ html {
     box-sizing: border-box;
     scroll-behavior: smooth;
     // color: #202020;
-    // background-color: var(--main-background) !important;
+    // background-color: var(--primary-background) !important;
 }
 
 *,
@@ -135,7 +135,7 @@ html {
 .main-container {
     padding: 60px;
     transition: $ease-out;
-    background-color: var(--main-background);
+    background-color: var(--primary-background);
     color: var(--main-color);
 
     &.--is-expanded {
