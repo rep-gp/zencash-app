@@ -1,14 +1,43 @@
 <template>
     <div class="card-container">
-        <slot />
+        <div class="card-title">
+            {{ title }}
+        </div>
+        <div class="card-value">
+            <div>
+                {{ value }} <span v-if="total">
+                    / {{ total }}
+                </span>
+            </div>
+
+            <div class="percentage-value">
+                <UpArrow v-if="percentage > 0" class="arrow-icon up-arrow" />
+                <DownArrow v-if="percentage < 0" class="arrow-icon down-arrow" />
+
+                {{ String(percentage).replace('-', '') }} %
+            </div>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
+import UpArrow from '../../static/icons/arrow-up.svg'
+import DownArrow from '../../static/icons/arrow-down.svg'
 
 export default defineComponent({
-    name: 'Card'
+    name: 'Card',
+    components: {
+        UpArrow,
+        DownArrow
+    },
+    props: {
+        title: { type: String, default: 'Card' },
+        value: { type: Number, default: 0 },
+        total: { type: Number },
+        percentage: { type: Number, default: 0 },
+        type: { type: String, default: '' }
+    }
 })
 </script>
 
@@ -20,5 +49,26 @@ export default defineComponent({
         -webkit-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
         -moz-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
         box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
+    }
+
+    .card-title {
+        font-weight: 600;
+        font-size: 2vh;
+        color: #413f4d
+    }
+
+    .card-value {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 2.3vh;
+        font-weight: 600;
+        margin-top: 13%
+    }
+
+    .percentage-value {
+        font-size: 1.9vh;
+        font-weight: 700;
     }
 </style>

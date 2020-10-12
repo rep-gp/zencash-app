@@ -1,54 +1,36 @@
 <template>
     <div class="grid column-1">
         <div class="column-1">
-            <Card class="card-grid">
-                <div class="card-title">
-                    Total Sales
-                </div>
+            <Card
+                title="Total Sales"
+                :value="Number(total_sales.value)"
+                :percentage="Number(total_sales.percentage)"
+                class="card-grid"
+            />
 
-                <div class="card-value">
-                    R$ 1000
-                    <div class="percentage-value">
-                        1%
-                    </div>
-                </div>
-            </Card>
-            <Card class="card-grid">
-                <div class="card-title">
-                    Sales today
-                </div>
-                <div class="card-value">
-                    R$ 800
-                    <div class="percentage-value">
-                        1%
-                    </div>
-                </div>
-            </Card>
+            <Card
+                title="Sales Today"
+                :value="Number(sales_today.value)"
+                :percentage="Number(sales_today.percentage)"
+                class="card-grid"
+            />
         </div>
 
         <div class="column-1">
-            <Card class="card-grid">
-                <div class="card-title">
-                    Total clients
-                </div>
-                <div class="card-value">
-                    20
-                    <div class="percentage-value">
-                        1%
-                    </div>
-                </div>
-            </Card>
-            <Card class="card-grid">
-                <div class="card-title">
-                    Month Paid Bills
-                </div>
-                <div class="card-value">
-                    3 / 23
-                    <div class="percentage-value">
-                        1%
-                    </div>
-                </div>
-            </Card>
+            <Card
+                title="Total Clients"
+                :value="Number(total_clients.value)"
+                :percentage="Number(total_clients.percentage)"
+                class="card-grid"
+            />
+
+            <Card
+                title="Mounth Paid Bills"
+                :value="Number(month_paid_bills.value)"
+                :total="Number(month_paid_bills.total)"
+                :percentage="Number(month_paid_bills.percentage)"
+                class="card-grid"
+            />
         </div>
     </div>
 </template>
@@ -57,7 +39,28 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    name: 'CardGrid'
+    name: 'CardGrid',
+    setup() {
+        return {
+            total_sales: {
+                value: 1000,
+                percentage: 60
+            },
+            sales_today: {
+                value: 1000,
+                percentage: -20
+            },
+            total_clients: {
+                value: 1000,
+                percentage: 12
+            },
+            month_paid_bills: {
+                value: 3,
+                total: 33,
+                percentage: -17
+            }
+        }
+    }
 })
 </script>
 
@@ -78,24 +81,15 @@ export default defineComponent({
         padding: 5% 5% 5% 5%;
     }
 
-    .card-title {
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: #413f4d
+    .arrow-icon {
+        height: 1.6vh
     }
 
-    .card-value {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 2rem;
-        font-weight: 600;
-        margin-top: 13%
+    .up-arrow {
+        fill: var(--green)
     }
 
-    .percentage-value {
-        font-size: 1.4rem;
-        font-weight: 700;
+    .down-arrow {
+        fill: var(--orange)
     }
 </style>

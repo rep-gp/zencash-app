@@ -4,12 +4,9 @@
         <div class="cash-content">
             <div class="left-column">
                 <div class="main-stats">
-                    <Card class="week-sales">
-                        <div class="card-title">
-                            Week Sales
-                        </div>
+                    <CardChart title="Week Sales" class="chart">
                         <ColumnChart />
-                    </Card>
+                    </CardChart>
 
                     <CardGrid />
                 </div>
@@ -30,7 +27,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
     .cash-container {
-        height: 90vh;
+        height: 80vh;
 
         h1 {
             font-size: 40px;
@@ -54,21 +51,14 @@ export default defineComponent({
         height: 25vh
     }
 
-    .week-sales {
+    .summary {
+        flex: 1
+    }
+
+    .chart {
         flex: 1;
         height: 23.7vh;
         margin-bottom: 3%;
-        padding: 1.5% 1.5% 0% 1.5%;
-    }
-
-    .card-title {
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: #413f4d
-    }
-
-    .summary {
-        flex: 1
     }
 
 </style>

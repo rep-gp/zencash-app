@@ -1,6 +1,6 @@
 <template>
     <div>
-        <apexchart type="bar" height="130%" :options="chartOptions" :series="series" />
+        <apexchart type="bar" height="100%" class="chart" :options="chartOptions" :series="series" />
     </div>
 </template>
 
@@ -18,7 +18,7 @@ export default defineComponent({
         return {
             series: [{
                 name: 'Day Sales',
-                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+                data: [44, 55, 57, 56, 61, 58, 63]
             }],
             chartOptions: {
                 chart: {
@@ -26,6 +26,9 @@ export default defineComponent({
                     toolbar: {
                         show: false
                     }
+                },
+                grid: {
+                    show: false
                 },
                 plotOptions: {
                     bar: {
@@ -46,12 +49,13 @@ export default defineComponent({
                     categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                 },
                 yaxis: {
+                    opposite: true,
                     title: {
                         text: '$ (thousands)'
                     }
                 },
                 fill: {
-                    colors: ['#3CDA7D'],
+                    colors: ['var(--green)'],
                     opacity: 1
                 },
                 legend: {
@@ -59,7 +63,7 @@ export default defineComponent({
                 },
                 tooltip: {
                     y: {
-                        formatter (val) {
+                        formatter (val: any) {
                             return '$ ' + val + ' thousands'
                         }
                     }
@@ -72,5 +76,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-
+    .chart {
+        max-height: 20vh
+    }
 </style>

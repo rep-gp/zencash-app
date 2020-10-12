@@ -14,7 +14,7 @@ export const parseTransaction = (data: any): any => {
                 'day'
             )
                 ? (transaction.payment_date = 'Today')
-                : moment(transaction.payment_date).format('DD.MM')
+                : moment(transaction.payment_date).format('DD/MM/YYYY')
             transaction.payment_method = String(
                 transaction.payment_method
             ).replace('_', ' ')
