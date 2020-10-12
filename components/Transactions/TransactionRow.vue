@@ -7,7 +7,6 @@
         </div>
 
         <div class="column type">
-            <typeIcons :is="typeIcons[String(transaction.type)]" v-if="transaction.type" class="column_icon" />
             <span :class="transaction.type">
                 {{ transaction.type }}
             </span>
@@ -54,15 +53,8 @@ export default defineComponent({
             money: MoneyIcon
         }))
 
-        const typeIcons = computed(() => ({
-            sell: MoneyIcon,
-            bill: MoneyIcon,
-            investiment: MoneyIcon
-        }))
-
         return {
-            paymentIcons,
-            typeIcons
+            paymentIcons
         }
     },
 
@@ -97,38 +89,46 @@ export default defineComponent({
     display: flex;
     flex: 1;
     justify-content: center;
+    align-items: center;
     padding-right: 3%;
     padding-left: 3%;
+    margin-right: 2%;
 }
 
 .date{
     font-weight: 700;
+    font-size: 2vh;
 }
 
 .with {
     font-weight: 700;
-    font-size: 0.95rem
+    font-size: 1.5vh;
+    text-align: center;
 }
 
 .type {
     font-weight: 700;
-    font-size: 0.95rem
+    font-size: 2vh;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
 .method {
     text-transform: capitalize;
     color: #535366;
     align-self: center;
+    font-size: 1.8vh;
 }
 
 .value {
     font-weight: 700;
+    font-size: 2vh;
     color: #535366;
 }
 
 .column_icon{
-    height: 2.6vh;
-    width: 2.6vh;
+    height: 2vh;
+    width: 2vh;
     margin-right: auto;
 }
 
@@ -137,6 +137,6 @@ export default defineComponent({
 }
 
 .bill {
-    color: #E02F22
+    color: var(--orange)
 }
 </style>
