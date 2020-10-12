@@ -97,6 +97,7 @@ export default defineComponent({
     display: flex;
     flex: 1;
     justify-content: center;
+    align-items: center;
     padding-right: 3%;
     padding-left: 3%;
 }
@@ -112,7 +113,9 @@ export default defineComponent({
 
 .type {
     font-weight: 700;
-    font-size: 0.95rem
+    font-size: 0.95rem;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
 .method {
