@@ -39,7 +39,7 @@ export default defineComponent({
             return [
                 {
                     section: 'Home',
-                    routeName: 'index',
+                    routeName: 'home',
                     route: '/home',
                     icon: 'home',
                     items: []

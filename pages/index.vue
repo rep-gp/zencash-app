@@ -12,7 +12,12 @@
 
 <script>
 export default {
-    layout: 'home'
+    layout: 'home',
+    created () {
+        if (this.token) {
+            this.$router.push('/home')
+        }
+    }
 }
 </script>
 
