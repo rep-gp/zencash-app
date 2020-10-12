@@ -1,7 +1,7 @@
 <template>
     <div :class="['sidebar', {'--is-expanded': isExpanded}]">
         <div class="sidebar-items">
-            <div class="sidebar-logo" @click="onLogoClick">
+            <div class="sidebar-logo">
                 <img src="@/static/logo.png" alt="ZenCash Logo" class="sidebar-logo-img">
             </div>
 
