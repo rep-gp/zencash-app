@@ -66,7 +66,7 @@ export default defineComponent({
         items: { type: Array, default: (): [] => [] }
     },
 
-    setup(_, { root: { $router, $accessor } }) {
+    setup (_, { root: { $router, $accessor } }) {
         const isExpanded = computed(() => $accessor.ui.isExpanded)
         const isDarkMode = computed(() => $accessor.ui.isDarkMode)
         const { setDarkMode, setExpand } = uiActions(['setDarkMode', 'setExpand'])
@@ -80,14 +80,14 @@ export default defineComponent({
             config: ConfigIcon
         }))
 
-        function pushTo(routeName: string) {
+        function pushTo (routeName: string) {
             $router.push({ name: routeName })
         }
 
-        function toggleExpand() {
+        function toggleExpand () {
             setExpand(!isExpanded.value)
         }
-        function changeTheme() {
+        function changeTheme () {
             setDarkMode(!isDarkMode.value)
         }
 
@@ -102,7 +102,7 @@ export default defineComponent({
     },
 
     methods: {
-        isItemActive(route: string) {
+        isItemActive (route: string) {
             return this.$route.path === route
         }
     }

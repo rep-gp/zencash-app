@@ -18,7 +18,7 @@ export default defineComponent({
     props: {
         data: { type: Number, default: 0 }
     },
-    setup(props) {
+    setup (props) {
         const maxScore = 1000
 
         const percentage = computed(() =>

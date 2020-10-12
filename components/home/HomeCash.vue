@@ -13,7 +13,7 @@ export default defineComponent({
         data: { type: Object, default: () => ({}) }
     },
 
-    setup(props) {
+    setup (props) {
         const positiveValue = computed(() => props.data.positive)
         const negativeValue = computed(() => props.data.negative)
 

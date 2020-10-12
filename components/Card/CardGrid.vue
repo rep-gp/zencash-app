@@ -40,7 +40,7 @@ import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
     name: 'CardGrid',
-    setup() {
+    setup () {
         return {
             total_sales: {
                 value: 1000,

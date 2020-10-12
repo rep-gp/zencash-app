@@ -2,7 +2,12 @@
     <div :class="[{'dark': isDarkMode}]">
         <sidebar :items="items" />
         <div :class="['main-container', {'--is-expanded': isExpanded}]">
-            <nuxt />
+            <div v-if="token">
+                <nuxt />
+            </div>
+            <div v-else>
+                singin
+            </div>
         </div>
     </div>
 </template>
@@ -14,7 +19,7 @@ import { defineComponent } from '@vue/composition-api'
 import { AuthService } from '@/service/AuthService'
 
 export default defineComponent({
-    asyncData({ $api }) {
+    asyncData ({ $api }) {
         $api.auth.onAuthStateChanged((user) => {
             if (user) {
                 AuthService.setUser(user)
@@ -30,7 +35,7 @@ export default defineComponent({
 
     computed: {
         ...mapState('ui', ['isExpanded', 'isDarkMode']),
-        items() {
+        items () {
             return [
                 {
                     section: 'Home',
@@ -141,6 +146,12 @@ html {
     &.--is-expanded {
         padding-left: ($sidebar-width + 32px);
         transition: $ease-in;
+    }
+
+    h1 {
+        color: #555;
+        margin-bottom: 30px;
+        font-weight: 900;
     }
 }
 

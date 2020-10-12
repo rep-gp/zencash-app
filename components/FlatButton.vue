@@ -12,7 +12,7 @@ export default defineComponent({
         disabled: { type: Boolean, default: false }
     },
 
-    setup(props, { emit }) {
+    setup (props, { emit }) {
         const handleClick = (event: any) => {
             if (!props.disabled) { emit('click', event) }
         }

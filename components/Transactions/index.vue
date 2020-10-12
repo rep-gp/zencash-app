@@ -20,7 +20,7 @@ import { defineComponent, computed } from '@vue/composition-api'
 export default defineComponent({
     name: 'Transactions',
 
-    setup(_, { root: { $accessor } }) {
+    setup (_, { root: { $accessor } }) {
         $accessor.transactions.setTransactions()
         return { transactions: computed(() => $accessor.transactions.transactions) }
     }

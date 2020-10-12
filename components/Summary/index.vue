@@ -33,7 +33,7 @@ import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
     name: 'Summary',
-    data() {
+    data () {
         const transactionsData = [
             { title: 'Total transactions received', value: 6 },
             { title: 'Sum of entries', value: 600 },
