@@ -8,6 +8,10 @@
 
 <script>
 export default {
-    data: () => ({ companyData: { name: '21' } })
+    async asyncData ({ app: { $api } }) {
+        return {
+            companyData: await $api.get('/companies/0')
+        }
+    }
 }
 </script>
