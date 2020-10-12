@@ -55,6 +55,7 @@ import TaxIcon from '@/static/icons/tax.svg'
 import ItemsIcon from '@/static/icons/items.svg'
 import WalletIcon from '@/static/icons/wallet.svg'
 import MoneyIcon from '@/static/icons/monetization.svg'
+import ConfigIcon from '@/static/icons/config.svg'
 
 const { useActions: uiActions } = createNamespacedHelpers('ui')
 
@@ -75,7 +76,8 @@ export default defineComponent({
             tax: TaxIcon,
             wallet: WalletIcon,
             items: ItemsIcon,
-            money: MoneyIcon
+            money: MoneyIcon,
+            config: ConfigIcon
         }))
 
         function pushTo(routeName: string) {
@@ -115,8 +117,7 @@ export default defineComponent({
     position: fixed;
     z-index: 999;
     background: var(--main-background);
-    border-right: 3px solid var(--green);
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.349);
+    border-right: 1px solid var(--green);
     transition: $ease-out;
     cursor: initial;
 
@@ -128,8 +129,8 @@ export default defineComponent({
         padding: 0 14px;
 
         .sidebar-logo {
-            width: 100%;
-            margin: 30px 0 100px;
+            width: 200px;
+            margin: 60px auto;
             display: grid;
             place-items: center;
 
@@ -151,7 +152,6 @@ export default defineComponent({
 
             &:hover {
                 opacity: 1;
-                box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
             }
 
             &.--is-active {
