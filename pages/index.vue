@@ -9,7 +9,7 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    async asyncData({ $accessor }) {
+    async asyncData ({ $accessor }) {
         await $accessor.users.fetchUsers()
         const userList = $accessor.users.userList
 

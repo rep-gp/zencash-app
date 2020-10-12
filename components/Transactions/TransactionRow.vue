@@ -48,7 +48,7 @@ export default defineComponent({
         transaction: { Type: Object, default: '' }
     },
 
-    setup() {
+    setup () {
         const paymentIcons = computed(() => ({
             credit_card: GetnetIcon,
             money: MoneyIcon

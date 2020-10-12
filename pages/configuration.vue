@@ -10,7 +10,7 @@
 export default {
     async asyncData ({ app: { $api } }) {
         return {
-            companyData: await $api.get('/companies/0')
+            companyData: await $api.base.get('/companies/0')
         }
     }
 }

@@ -2,10 +2,10 @@ import { db, auth } from '~/service/utils'
 
 export class Service {
     public static async get (path: string) {
-        return (await db.ref(path).once('value')).toJSON()
+        return (await db.ref(path).once('value')).toJSON() as any
     }
 
-    public static async post(url: string, params: any) {
+    public static async post (url: string, params: any) {
         try {
             await db.ref(url).set(params)
         } catch (e) {
@@ -13,7 +13,7 @@ export class Service {
         }
     }
 
-    public static login({ email, password }: any) {
+    public static login ({ email, password }: any) {
         auth.signInWithEmailAndPassword(email, password)
 
         auth.onAuthStateChanged((user) => {
