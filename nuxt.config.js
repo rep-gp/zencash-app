@@ -13,14 +13,14 @@ export default {
 
     // Global page headers (https://go.nuxtjs.dev/config-head)
     head: {
-        title: 'Hackathon Dashboard App',
+        title: 'ZenCash Dashboard',
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { hid: 'description', name: 'description', content: '' }
         ],
         link: [
-            // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            { rel: 'icon', type: 'image', href: '/icon.png' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Nunito&display=swap' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
@@ -34,6 +34,8 @@ export default {
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
     plugins: [
         '~/plugins/apexcharts.ts',
+        '~/plugins/auth.ts',
+        '~/plugins/localstorage.ts',
         '~/plugins/composition-api.ts',
         '~/plugins/firebase-service.ts'
     ],
@@ -100,6 +102,10 @@ export default {
                 })
             }
         }
+    },
+
+    router: {
+        middleware: ['auth']
     },
 
     env: {

@@ -1,7 +1,14 @@
 <template>
-    <div class="home-page">
-        <home-score :data="834" />
-        <home-cash :data="{ positive: 13004.123432, negative: 7419.043923}" />
+    <div :key="token">
+        <div v-if="token" class="home-page">
+            <home-score :data="834" />
+            <home-cash :data="{ positive: 13004.123432, negative: 7419.043923}" />
+            <area-chart :data="[]" class="chart" />
+        </div>
+
+        <div v-else>
+            identidade
+        </div>
     </div>
 </template>
 
@@ -9,25 +16,16 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    async asyncData ({ $accessor }) {
-        await $accessor.users.fetchUsers()
-        const userList = $accessor.users.userList
-
-        return {
-            userList
-        }
-    }
 })
 
 </script>
 
 <style lang="scss" scoped>
 .home-page {
-    min-height: 93.4vh;
+    padding: 0 50px;
 
-    h1 {
-        font-size: 50px;
-        margin-bottom: 10px;
+    .chart {
+        margin-top: 30px;
     }
 }
 </style>

@@ -8,14 +8,14 @@
             <div class="section-title">
                 Gains
             </div>
-            <SummaryRow v-for="data in transactionsData" :key="JSON.stringify(data)" :data="data" />
+            <SummaryRow v-for="data in transactionsData" :key="data.value" :data="data" />
         </div>
 
         <div class="section">
             <div class="section-title">
                 Gains
             </div>
-            <SummaryRow v-for="data in transactionsData" :key="JSON.stringify(data)" :data="data" />
+            <SummaryRow v-for="data in transactionsData" :key="data.value" :data="data" />
         </div>
         <div class="balance">
             <div class="balance-title">
@@ -54,7 +54,7 @@ export default defineComponent({
     align-items: center;
     background-color:#00202E;
     border-radius: 5px;
-    height: 70vh;
+    height: 75vh;
     margin-left: 2%;
     color: white;
     padding: 1.5% 2% 1.5% 2%;
