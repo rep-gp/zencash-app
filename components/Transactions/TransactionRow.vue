@@ -2,7 +2,7 @@
     <div class="transaction_row">
         <div class="column type">
             <typeIcons :is="typeIcons[String(transaction.type)]" v-if="transaction.type" class="column_icon" />
-            <span :style="`color: ${colorTransaction[String(transaction.type)]}`">
+            <span :class="transaction.type">
                 {{ transaction.type }}
             </span>
         </div>
@@ -47,17 +47,9 @@ export default defineComponent({
             bill: MoneyIcon,
             investiment: MoneyIcon
         }))
-
-        const colorTransaction = computed(() => ({
-            sell: '#33E04D',
-            bill: '#E02F22',
-            investiment: '#3253FA'
-        }))
-
         return {
             paymentIcons,
-            typeIcons,
-            colorTransaction
+            typeIcons
         }
     }
 })
@@ -108,5 +100,13 @@ export default defineComponent({
     height: 2.6vh;
     width: 2.6vh;
     margin-right: auto;
+}
+
+.sell {
+    color: var(--green)
+}
+
+.bill {
+    color: #E02F22
 }
 </style>

@@ -1,8 +1,11 @@
 <template>
-    <div class="cash_container">
+    <div class="cash-container">
         <h1>Caixa</h1>
         <div class="cash-content">
-            <Transactions class="transactions-table" />
+            <div class="column">
+                <Card class="card" />
+                <Transactions class="transactions-table" />
+            </div>
             <Summary class="summary" />
         </div>
     </div>
@@ -17,22 +20,35 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.cash_container {
-    h1 {
-        font-size: 40px;
+    .cash-container {
+        height: 90vh;
+
+        h1 {
+            font-size: 40px;
+        }
     }
-}
 
-.cash-content {
-    display: flex;
-    flex-direction: row;
-}
+    .cash-content {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        align-items: center;
+    }
 
-.transactions-table {
-    flex:2
-}
+    .column {
+        flex: 2;
+    }
 
-.summary {
-   flex: 1
-}
+    .card {
+        flex: 1;
+        height: 10vh;
+        margin-bottom: 3%;
+    }
+
+    .transactions-table {
+    }
+
+    .summary {
+        flex: 1
+    }
 </style>

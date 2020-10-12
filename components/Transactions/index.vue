@@ -34,9 +34,13 @@ export default defineComponent({
         align-items: center;
         background-color: #e6e6e6;
         border-radius: 5px;
-        height: 60vh;
+        height: 70vh;
         background-color: white;
         overflow-x: hidden;
+
+        -webkit-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
     }
 
     .transactions_content {
