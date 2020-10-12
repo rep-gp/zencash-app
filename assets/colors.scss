@@ -1,13 +1,13 @@
 /** LIGHT MODE */
 // main
-$main-background--light: #fff;
-$main-color--light: #202020;
-$primary-text--light: #727272;
+$primary-background--light: #fff;
+$primary-text--light: #202020;
 $green--light: #3CDA7D;
-$gray--light: #ADADAD;
 $orange--light: #DA883C;
+$gray--light: #ADADAD;
 
 // secondary
+$secundary-text--light: #727272;
 $secondary-background--light: #e6e6e6;
 $secondary-color--light: #202020;
 
@@ -15,30 +15,16 @@ $secondary-color--light: #202020;
 $tertiary-background--light: #CCCCCC;
 $tertiary-color--light: #202020;
 
-// sidebar
-$sidebar-background--light: rgb(74, 116, 88);
-$sidebar-section--light: #abd6ab;
-$sidebar-item--light: #fff;
-$sidebar-hover--light: rgb(107, 129, 107);
-$sidebar-selected--light: rgb(46, 83, 46);
-
-
 /** DARK MODE */
 // main
-$main-green--dark: #3CDA7D;
-$main-background--dark: rgb(27, 27, 27);
-$main-color--dark: #f3f3f3;
-$main-text--dark: #f3f3f3;
-
-// sidebar
-$sidebar-background--dark: rgb(59, 80, 66);
-$sidebar-section--dark: #abd6ab;
-$sidebar-item--dark: #fff;
-$sidebar-hover--dark: rgb(107, 129, 107);
-$sidebar-selected--dark: rgb(46, 83, 46);
-
+$primary-background--dark: #202020;
+$primary-text--dark: #f3f3f3;
+$green--dark: #3CDA7D;
+$orange--dark: #DA883C;
+$gray--dark: #ADADAD;
 
 // secondary
+// $secundary-text--dark: #727272;
 $secondary-background--dark:#54695A;
 $secondary-color--dark: #202020;
 

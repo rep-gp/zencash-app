@@ -19,5 +19,16 @@ export const actions: ActionTree<State, State> = {
     async fetchUsers({ commit }) {
         const users = await this.$api.get('users/')
         commit('SET_USERS', users)
+    },
+
+    async postUser() {
+        const params = {
+            name: 'Teste',
+            email: 'email@a.com',
+            company_id: '0',
+            password: 'xpto'
+        }
+
+        await this.$api.post('users/', params)
     }
 }
