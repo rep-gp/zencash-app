@@ -149,6 +149,12 @@ html {
         padding-left: ($sidebar-width + 32px);
         transition: $ease-in;
     }
+
+    h1 {
+        color: #555;
+        margin-bottom: 30px;
+        font-weight: 900;
+    }
 }
 
 .fade-enter-active, .fade-leave-active {

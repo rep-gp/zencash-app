@@ -9,13 +9,13 @@ export const state = () => ({
 export type State = ReturnType<typeof state>
 
 export const mutations: MutationTree<State> = {
-    SET_COMPANIES(state, companies) {
+    SET_COMPANIES (state, companies) {
         state.companies = companies
     }
 }
 
 export const actions: ActionTree<State, State> = {
-    async fetchCompanies({ commit }) {
+    async fetchCompanies ({ commit }) {
         // Start loading
         const companies = await this.$api.get('/companies')
         commit('SET_COMPANIES', companies)

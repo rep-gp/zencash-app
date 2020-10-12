@@ -10,13 +10,13 @@ export const state = () => ({
 export type State = ReturnType<typeof state>
 
 export const mutations: MutationTree<State> = {
-    SET_USERS(state, users: []) {
+    SET_USERS (state, users: []) {
         state.userList = users
     }
 }
 
 export const actions: ActionTree<State, State> = {
-    async fetchUsers({ commit }) {
+    async fetchUsers ({ commit }) {
         const users = await this.$api.get('users/')
         commit('SET_USERS', users)
     },

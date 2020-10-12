@@ -10,7 +10,7 @@ export const state = () => ({
 export type State = ReturnType<typeof state>
 
 export const mutations: MutationTree<State> = {
-    SET_TRANSACTIONS(state, transactions) {
+    SET_TRANSACTIONS (state, transactions) {
         state.transactions = transactions
     }
 }
