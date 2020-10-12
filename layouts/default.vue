@@ -61,18 +61,40 @@ export default defineComponent({
 
 <style lang="scss">
 :root {
-    --main-background: #{$main-background--light};
+    --main-color: #{$main-color--light};
     --primary-text: #{$primary-text--light};
-    --gray-light: #{$gray-light--light};
+    --gray: #{$gray--light};
     --green: #{$green--light};
     --orange: #{$orange--light};
+
+    // background
+    --main-background: #{$main-background--light};
+    --secondary-background: #{$secondary-background--light};
+    --tertiary-background: #{$tertiary-background--light};
+
+    // sidebar light colors
+    --sidebar-background: #{$sidebar-background--light};
+    --sidebar-item: #{$sidebar-item--light};
+    --sidebar-section: #{$sidebar-section--light};
+    --sidebar-hover: #{$sidebar-hover--light};
+    --sidebar-selected: #{$sidebar-selected--light};
 }
 .dark {
-    --main-background: #{$main-background--dark};
-    --primary-text: #{$primary-text--dark};
-    --green: #{$green--dark};
-}
+    --main-color: #{$main-color--dark};
+    --primary-text: #{$main-text--dark};
 
+    // background
+    --main-background: #{$main-background--dark};
+    --secondary-background: #{$secondary-background--dark};
+    --tertiary-background: #{$tertiary-background--dark};
+
+    // sidebar dark colors
+    --sidebar-background: #{$sidebar-background--dark};
+    --sidebar-item: #{$sidebar-item--dark};
+    --sidebar-section: #{$sidebar-section--dark};
+    --sidebar-hover: #{$sidebar-hover--dark};
+    --sidebar-selected: #{$sidebar-selected--dark};
+}
 html {
     font-family: Barlow,
         Roboto,

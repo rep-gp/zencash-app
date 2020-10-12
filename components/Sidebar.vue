@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <login />
+            <!-- <login /> -->
         </div>
     </div>
 </template>
