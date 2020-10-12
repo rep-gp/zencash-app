@@ -21,7 +21,7 @@ export const actions: ActionTree<State, State> = {
         commit('SET_USERS', users)
     },
 
-    async postUser() {
+    async postUser () {
         const params = {
             name: 'Teste',
             email: 'email@a.com',

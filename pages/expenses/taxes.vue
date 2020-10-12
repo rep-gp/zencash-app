@@ -24,7 +24,7 @@
             </div>
 
             <div class="field">
-                <SolidButton @click="recalculate" class="apply-btn">
+                <SolidButton class="apply-btn" @click="recalculate">
                     {{ simulationLoading ? 'Carregando...' : 'Aplicar' }}
                 </SolidButton>
             </div>

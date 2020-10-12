@@ -16,7 +16,7 @@ export const mutations: MutationTree<State> = {
 }
 
 export const actions: ActionTree<State, State> = {
-    async setTransactions({ commit }) {
+    async setTransactions ({ commit }) {
         const data = await this.$api.get('companies/0/transactions')
         commit('SET_TRANSACTIONS', parseTransaction(data))
     }
