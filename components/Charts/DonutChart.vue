@@ -14,7 +14,7 @@ export default defineComponent({
         apexchart: VueApexCharts
     },
 
-    setup(_) {
+    setup (_) {
         return {
             series: [44, 55, 41, 17],
             chartOptions: {
