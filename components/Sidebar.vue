@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <!-- <user-area /> -->
+            <!-- <login /> -->
         </div>
     </div>
 </template>
@@ -81,11 +81,6 @@ export default defineComponent({
         function pushTo(routeName: string) {
             $router.push({ name: routeName })
         }
-
-        // $api.listenData('/companies', (snap) => {
-        //     const val = snap.toJSON()
-        //     console.log(val)
-        // })
 
         function toggleExpand() {
             setExpand(!isExpanded.value)
@@ -139,7 +134,7 @@ export default defineComponent({
             place-items: center;
 
             &-img {
-                width: 90%;
+                width: 85%;
             }
         }
 
@@ -193,6 +188,7 @@ export default defineComponent({
             }
 
             &-name {
+                font-weight: 600;
                 padding-left: 10px;
                 opacity: 0;
             }

@@ -35,6 +35,7 @@ export default {
             }
         },
         axis () {
+
             // return this.interval.map(({ date }) => capitalize(moment(date).format('MMM/YY')))
         },
         series () {

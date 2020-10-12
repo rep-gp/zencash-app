@@ -1,28 +1,34 @@
 import { ActionTree, MutationTree } from 'vuex'
-import { Service } from '../plugins/firebase-service'
 
 export const namespaced = true
 
 export const state = () => ({
-    userList: []
+    userId: ''
 })
 
 export type State = ReturnType<typeof state>
 
 export const mutations: MutationTree<State> = {
-    ON_AUTH_STATE_CHANGED_MUTATION(state, { authUser, claims }) {
-        if (!authUser) {
-            claims = null
-            console.log(state, authUser, claims)
-            // perform logout operations
-        } else {
-            // Do something with the authUser and the claims object...
-        }
+    SET_USER_ID(state, id) {
+        state.userId = id
     }
 }
 
 export const actions: ActionTree<State, State> = {
-    authCheck() {
-        Service.teste()
+    setUserId({ commit }, id) {
+        commit('SET_USER_ID', id)
+    },
+    async postCheck() {
+        const params = {
+            name: 'Teste',
+            email: 'email@a.com',
+            company_id: '0',
+            password: 'xpto'
+        }
+
+        await this.$api.post('users/', params)
+    },
+    login(_, payload: {}) {
+        this.$api.login(payload)
     }
 }
