@@ -1,52 +1,48 @@
 <template>
-    <div v-if="token" class="home-page">
-        <home-score :data="834" />
-        <home-cash :data="homeCash" />
-        <area-chart :data="[]" class="chart" />
-        <div class="grid">
-            <home-table :data="homeTable" />
-            <home-expense :balance="dif" :expense="homeTable[3]" />
+    <div class="home-page">
+        <div class="bg" />
+        <div class="login">
+            <div class="logo">
+                <img src="/logo.png">
+            </div>
+            <user-area />
         </div>
     </div>
 </template>
 
 <script>
-import { defineComponent, ref, computed } from '@vue/composition-api'
-
-export default defineComponent({
-    setup () {
-        const homeTable = ref([
-            { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-11-03') },
-            { gasto: 'Aluguel', valor: 324.43, data: new Date('2020-11-02') },
-            { gasto: 'Conta de luz', valor: 41.05, data: new Date('2020-11-01') },
-            { gasto: 'Conta de agua', valor: 2174.465, data: new Date('2020-10-20') },
-            { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-10') },
-            { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-02') },
-            { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-01') },
-            { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-02') },
-            { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-01') },
-            { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-02') },
-            { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-01') }
-        ])
-        const homeCash = ref({ positive: 14004.123432, negative: 7419.043923 })
-        const dif = computed(() => homeCash.value.positive - homeCash.value.negative)
-
-        return {
-            homeTable,
-            homeCash,
-            dif
+export default {
+    layout: 'home',
+    created () {
+        if (this.token) {
+            this.$router.push('/home')
         }
     }
-})
-
+}
 </script>
 
 <style lang="scss" scoped>
-.home-page {
-    padding: 0 50px;
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url('/bg.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+.login {
+    width: 20vw;
+    margin: 150px;
 
-    .chart {
-        margin-top: 30px;
+    .logo {
+        img {
+            margin-bottom: 30px;
+            width: 100%;
+        }
     }
 
     .grid {

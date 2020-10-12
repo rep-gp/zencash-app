@@ -13,7 +13,6 @@ export default defineComponent({
                 if (user) {
                     AuthService.setUser(user)
                     this.$ls.set('token', user.uid)
-                    console.log('on by auth')
                 } else {
                     AuthService.setUser(null)
                     this.$ls.set('token', '')

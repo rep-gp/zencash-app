@@ -1,20 +1,12 @@
-# dashboard-app
+# ZenCash Platform
+Projeto que contém todo o código de frontend da plataforma.
+Feito em TypeScript e Nuxt.js com muito amor <3
 
-## Build Setup
+## Motivação
+Temos uma página no Notion detalhando bem qual é a nossa missão, e bastante conteúdo sobre!
 
-```bash
-# install dependencies
-$ yarn install
+<p align="center">
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+[O que é a ZenCash?](https://www.notion.so/E-se-voc-pudesse-salvar-uma-empresa-0b6d763f91a747319292ac145e717127)
 
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+</p>
