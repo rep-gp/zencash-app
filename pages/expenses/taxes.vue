@@ -12,7 +12,7 @@
         <div v-if="simulationOpen" class="simulation-fields">
             <div class="field">
                 <label>Faturamento Mensal</label>
-                <input v-model="monthlyRevenue" type="number">
+                <input v: any-model="monthlyRevenue" type="number">
             </div>
             <div class="field">
                 <label>Salário Bruto Mensal</label>
