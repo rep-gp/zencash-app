@@ -14,7 +14,7 @@ export default defineComponent({
         apexchart: VueApexCharts
     },
 
-    setup(_) {
+    setup (_) {
         return {
             series: [{
                 name: 'Day Sales',

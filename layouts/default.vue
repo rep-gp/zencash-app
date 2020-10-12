@@ -14,7 +14,7 @@ import { defineComponent } from '@vue/composition-api'
 import { AuthService } from '@/service/AuthService'
 
 export default defineComponent({
-    asyncData({ $api }) {
+    asyncData ({ $api }) {
         $api.auth.onAuthStateChanged((user) => {
             if (user) {
                 AuthService.setUser(user)
@@ -30,12 +30,12 @@ export default defineComponent({
 
     computed: {
         ...mapState('ui', ['isExpanded', 'isDarkMode']),
-        items() {
+        items () {
             return [
                 {
                     section: 'Home',
                     routeName: 'index',
-                    route: '/',
+                    route: '/home',
                     icon: 'home',
                     items: []
                 },

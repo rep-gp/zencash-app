@@ -19,8 +19,8 @@ export const actions: ActionTree<State, State> = {
     // setUser({ commit }, data) {
     //     commit('SET_USER', data)
     // },
-    async login(_, { email, password }) {
-        await this.$api.auth.signInWithEmailAndPassword(email, password).catch((error) => {
+    async login (_, { email, password }) {
+        await this.$api.auth.signInWithEmailAndPassword(email, password).catch((error: any) => {
             const errorCode = error.code
             const errorMessage = error.message
             if (errorCode === 'auth/wrong-password') {
@@ -29,7 +29,7 @@ export const actions: ActionTree<State, State> = {
                 console.error(errorMessage)
             }
         })
-        this.$api.auth.onAuthStateChanged((_user) => {
+        this.$api.auth.onAuthStateChanged((_user: any) => {
             if (_user) {
                 AuthService.setUser(_user)
             } else {
@@ -41,7 +41,7 @@ export const actions: ActionTree<State, State> = {
         // dispatch('setUser', AuthService.user)
     },
 
-    async logout() {
+    async logout () {
         let error = false
         await this.$api.auth.signOut()
             .catch(() => {

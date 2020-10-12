@@ -16,11 +16,11 @@ export default {
 
 <style lang="scss" scoped>
 button {
-    border-radius: 12px;
+    border-radius: 4px;
     padding: 12px 18px;
     font-size: 13pt;
     font-weight: 700;
-    color: var(--main-background);
+    color: white;
     background: var(--green);
     border: 0;
     cursor: pointer;
