@@ -1,5 +1,8 @@
 <template>
     <div class="transaction_header">
+        <div class="column with">
+            With
+        </div>
         <div class="column type">
             Type
         </div>

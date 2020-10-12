@@ -1,11 +1,18 @@
 <template>
     <div class="transaction_row">
+        <div class="column with">
+            <BillIcon v-if="transaction.bill_data" class="column_icon" />
+            <AvatarIcon v-if="transaction.costumer_data" class="column_icon" />
+            {{ getWith(transaction) }}
+        </div>
+
         <div class="column type">
             <typeIcons :is="typeIcons[String(transaction.type)]" v-if="transaction.type" class="column_icon" />
             <span :class="transaction.type">
                 {{ transaction.type }}
             </span>
         </div>
+
         <div class="column date">
             <span>{{ transaction.payment_date }}</span>
         </div>
@@ -18,19 +25,24 @@
             <span>{{ transaction.payment_method }}</span>
         </div>
     </div>
+    </div>
 </template>
 
-<script>
+<script lan="ts">
 import { defineComponent, computed } from '@vue/composition-api'
 
 import GetnetIcon from '@/static/icons/getnet.svg'
 import MoneyIcon from '@/static/icons/money.svg'
+import BillIcon from '@/static/icons/bill.svg'
+import AvatarIcon from '@/static/icons/avatar.svg'
 
 export default defineComponent({
     name: 'TransactionRow',
     components: {
         GetnetIcon,
-        MoneyIcon
+        MoneyIcon,
+        BillIcon,
+        AvatarIcon
     },
     props: {
         transaction: { Type: Object, default: '' }
@@ -47,9 +59,22 @@ export default defineComponent({
             bill: MoneyIcon,
             investiment: MoneyIcon
         }))
+
         return {
             paymentIcons,
             typeIcons
+        }
+    },
+
+    methods: {
+        getWith (transaction) {
+            if (transaction.costumer_data !== undefined) {
+                return (transaction.costumer_data.name)
+            } else if (transaction.bill_data !== undefined) {
+                return (transaction.bill_data.title)
+            }
+
+            return ''
         }
     }
 })
@@ -72,12 +97,17 @@ export default defineComponent({
     display: flex;
     flex: 1;
     justify-content: center;
-    padding-right: 5%;
-    padding-left: 5%;
+    padding-right: 3%;
+    padding-left: 3%;
 }
 
 .date{
     font-weight: 700;
+}
+
+.with {
+    font-weight: 700;
+    font-size: 0.95rem
 }
 
 .type {

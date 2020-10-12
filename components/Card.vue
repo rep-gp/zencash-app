@@ -1,6 +1,7 @@
 <template>
     <div class="card-container">
         Card
+        <slot />
     </div>
 </template>
 
@@ -8,6 +9,7 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
+    name: 'Card'
 })
 </script>
 
