@@ -6,7 +6,9 @@
             <div> data </div>
         </header>
 
-        <home-table-row v-for="(expense, idx) in data" :key="idx" v-bind="expense"/>
+        <div class="home-table-list">
+            <home-table-row v-for="(expense, idx) in data" :key="idx" v-bind="expense" />
+        </div>
     </div>
 </template>
 
@@ -22,6 +24,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home-table {
+    padding: 6px;
+    border: 1px solid var(--secondary-background);
+
     & > header {
         color: var(--secundary-text);
         font-weight: bold;
@@ -29,6 +34,11 @@ export default defineComponent({
         padding: 10px;
         display: grid;
         grid-template-columns: 1.4fr 1fr 1fr;
+    }
+
+    &-list {
+        overflow-y: auto;
+        max-height: 230px;
     }
 }
 </style>

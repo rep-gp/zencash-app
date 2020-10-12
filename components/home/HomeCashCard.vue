@@ -7,8 +7,9 @@
                 {{ label }}
             </div>
             <div class="card-info-text">
-                <span>R$</span>
-                {{ value.toFixed(2).replace('.', ',') }}
+                <currency font-size="3.8vw" :font-weight="800" :orange="icon === 'down'">
+                    {{ value.toFixed(2).replace('.', ',') }}
+                </currency>
             </div>
         </div>
     </div>
@@ -49,8 +50,8 @@ export default defineComponent({
     width: 90%;
 
     .card-icon {
-        margin-right: 50px;
-        width: 80px;
+        margin-right: 1.1vw;
+        width: 5vw;
         fill: var(--green);
     }
 
@@ -61,22 +62,22 @@ export default defineComponent({
 
         }
 
-        &-text {
-            font-weight: 800;
-            font-size: 80px;
-            color: var(--primary-color);
+        // &-text {
+        //     font-weight: 800;
+        //     // font-size: ;
+        //     color: var(--primary-color);
 
-            & > span {
-                font-weight: 900;
-                color: var(--green);
-                margin-right: -10px;
-            }
-        }
+        //     & > span {
+        //         font-weight: 900;
+        //         color: var(--green);
+        //         margin-right: -10px;
+        //     }
+        // }
     }
 
     &.--orange {
         .card-icon { fill: var(--orange); }
-        .card-info-text > span { color: var(--orange); }
+        // .card-info-text > span { color: var(--orange); }
     }
 
 }

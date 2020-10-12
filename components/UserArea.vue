@@ -52,7 +52,6 @@ export default defineComponent({
             this.checkUser()
         },
         async onLogout () {
-            console.log('logout')
             await this.logout()
             this.checkUser()
         }

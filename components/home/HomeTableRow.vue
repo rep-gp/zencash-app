@@ -1,7 +1,9 @@
 <template>
     <div class="home-table-row">
         <div> {{ gasto }} </div>
-        <div class="value"> R${{ valor.toFixed(2).replace('.', ',') }} </div>
+        <div class="value">
+            R${{ valor.toFixed(2).replace('.', ',') }}
+        </div>
         <div> {{ parsedDate }} </div>
     </div>
 </template>
