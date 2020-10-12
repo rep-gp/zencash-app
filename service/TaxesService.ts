@@ -4,7 +4,7 @@ import { Service } from './Service'
 const API_URL = 'https://hxqsh0c52k.execute-api.us-east-1.amazonaws.com/bypass?url=https://neositecontabil.topcontroller.com.br/load_analisetributaria/analisar'
 
 export class TaxesService extends Service {
-    public static async calculate (companyId: string, options?: { monthlyRevenue: number, monthlyPayroll: number, wageCompensation: number }) {
+    public static async calculate (companyId: string, options?: { monthlyRevenue: number | unknown, monthlyPayroll: number | unknown, wageCompensation: number | unknown }) {
         const { monthlyRevenue, monthlyPayroll, wageCompensation } = await Service.get('/companies/' + companyId) || {}
         const requestBody = [
             'atividade=19',

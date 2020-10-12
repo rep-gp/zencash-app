@@ -58,10 +58,7 @@ export default defineComponent({
     margin-left: 2%;
     color: white;
     padding: 1.5% 2% 1.5% 2%;
-
-    -webkit-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.75);
+    border: 1px solid var(--secondary-background)
 }
 
 .summary-title {

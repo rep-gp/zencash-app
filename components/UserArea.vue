@@ -29,9 +29,9 @@
         </div>
 
         <div v-else>
-            <btn class="user-submit" @click="onLogout">
+            <flat-button class="user-submit" @click="onLogout">
                 Logout
-            </btn>
+            </flat-button>
         </div>
     </div>
 </template>
