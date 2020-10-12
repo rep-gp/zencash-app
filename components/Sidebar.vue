@@ -47,6 +47,7 @@ import { createNamespacedHelpers } from 'vuex-composition-helpers'
 import MenuIcon from '@/static/icons/menu.svg'
 import BulbIcon from '@/static/icons/bulb.svg'
 import HomeIcon from '@/static/icons/home.svg'
+import PeopleIcon from '@/static/icons/people.svg'
 import TaxIcon from '@/static/icons/tax.svg'
 import ItemsIcon from '@/static/icons/items.svg'
 import WalletIcon from '@/static/icons/wallet.svg'
@@ -72,6 +73,7 @@ export default defineComponent({
             tax: TaxIcon,
             wallet: WalletIcon,
             items: ItemsIcon,
+            people: PeopleIcon,
             money: MoneyIcon,
             config: ConfigIcon
         }))

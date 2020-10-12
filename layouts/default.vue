@@ -65,7 +65,7 @@ export default defineComponent({
                         },
                         {
                             name: 'Funcionários',
-                            // icon: 'tax',
+                            icon: 'people',
                             route: '/expenses/employees',
                             routeName: 'expenses-employees'
                         }
