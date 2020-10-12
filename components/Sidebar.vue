@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <!-- <user-area /> -->
+            <login />
         </div>
     </div>
 </template>
@@ -88,21 +88,14 @@ export default defineComponent({
         function changeTheme() {
             setDarkMode(!isDarkMode.value)
         }
-        const companies = computed(() => $accessor.company.companies)
 
-        async function onLogoClick() {
-            // await $accessor.company.fetchCompanies()
-            await $accessor.auth.postCheck()
-        }
         return {
             icons,
             pushTo,
             isExpanded,
             toggleExpand,
             changeTheme,
-            isDarkMode,
-            onLogoClick,
-            companies
+            isDarkMode
         }
     },
 

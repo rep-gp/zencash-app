@@ -1,6 +1,5 @@
 <template>
     <div class="home-page">
-        {{ userList }}
         <home-score :data="834" />
         <home-cash :data="{ positive: 13004.123432, negative: 7419.043923}" />
     </div>
