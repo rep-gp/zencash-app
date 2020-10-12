@@ -126,9 +126,9 @@ export default defineComponent({
         async recalculate () {
             this.simulationLoading = true
             this.taxes = await TaxesService.calculate('0', {
-                monthlyRevenue: this.monthlyRevenue,
-                monthlyPayroll: this.monthlyPayroll,
-                wageCompensation: this.wageCompensation
+                monthlyRevenue: this.monthlyRevenue as number || 0,
+                monthlyPayroll: this.monthlyPayroll as number || 0,
+                wageCompensation: this.wageCompensation as number || 0
             })
             this.simulationLoading = false
         }
