@@ -57,7 +57,7 @@ export default defineComponent({
         const typeIcons = computed(() => ({
             sell: MoneyIcon,
             bill: MoneyIcon,
-            investiment: MoneyIcon
+            invest: MoneyIcon
         }))
 
         return {

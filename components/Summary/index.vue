@@ -8,14 +8,14 @@
             <div class="section-title">
                 Gains
             </div>
-            <SummaryRow v-for="data in transactionsData" :key="data" :data="data" />
+            <SummaryRow v-for="data in transactionsData" :key="data.value" :data="data" />
         </div>
 
         <div class="section">
             <div class="section-title">
                 Gains
             </div>
-            <SummaryRow v-for="data in transactionsData" :key="data" :data="data" />
+            <SummaryRow v-for="data in transactionsData" :key="data.value" :data="data" />
         </div>
         <div class="balance">
             <div class="balance-title">

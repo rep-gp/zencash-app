@@ -2,34 +2,17 @@
     <div class="cash-container">
         <h1>Caixa</h1>
         <div class="cash-content">
-            <div class="column-2">
+            <div class="left-column">
                 <div class="main-stats">
-                    <Card class="week-sales column-1">
+                    <Card class="week-sales">
                         Week
                     </Card>
-                    <div class="grid column-1">
-                        <div class="column-1 grid-">
-                            <Card class="card-grid">
-                                Week 1
-                            </Card>
-                            <Card class="card-grid">
-                                Week 2
-                            </Card>
-                        </div>
 
-                        <div class="column-1">
-                            <Card class="card-grid">
-                                Week 3
-                            </Card>
-                            <Card class="card-grid">
-                                Week 4
-                            </Card>
-                        </div>
-                    </div>
+                    <CardGrid />
                 </div>
-                <Transactions class="transactions-table" />
+                <Transactions />
             </div>
-            <Summary class="summary column-1" />
+            <Summary class="summary" />
         </div>
     </div>
 </template>
@@ -58,40 +41,24 @@ export default defineComponent({
         align-items: center;
     }
 
-    .column-1 {
-        flex: 1
-    }
-
-    .column-2 {
-        flex: 2;
-    }
-
-    .week-sales {
-        height: 10vh;
-        margin-bottom: 3%;
-        margin-right: 1.5%
-    }
-
-    .grid {
-        display: flex;
-    }
-
-    .card-grid {
-        flex: 1;
-        height: 9vh;
-        margin: 0% 0% 3% 3%!important;
-
-        &::last-child {
-            margin-top:  5%
-        }
+    .left-column {
+        flex: 3;
     }
 
     .main-stats{
         display: flex;
         flex-direction: row;
-        height: 20vh
+        height: 25vh
     }
 
-    .transactions-table {
+    .week-sales {
+        flex: 1;
+        height: 23.7vh;
+        margin-bottom: 3%;
     }
+
+    .summary {
+        flex: 1
+    }
+
 </style>
