@@ -29,9 +29,9 @@
         </div>
 
         <div v-else>
-            <flat-button class="user-submit" @click="onLogout">
+            <outline-button class="user-submit" @click="onLogout">
                 Logout
-            </flat-button>
+            </outline-button>
         </div>
     </div>
 </template>
@@ -57,7 +57,6 @@ export default defineComponent({
             this.$router.push('/home')
         },
         async onLogout () {
-            console.log('logout')
             await this.logout()
             this.checkUser()
         }
@@ -100,5 +99,8 @@ export default defineComponent({
 
         &:focus { border-bottom: 1px solid rgb(144, 144, 144); }
     }
+}
+.user-submit {
+    width: 100%;
 }
 </style>

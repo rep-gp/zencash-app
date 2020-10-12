@@ -44,5 +44,13 @@ export default {
             width: 100%;
         }
     }
+
+    .grid {
+        margin-top: 30px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 20px;
+    }
 }
 </style>
