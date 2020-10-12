@@ -1,7 +1,7 @@
 <template>
     <div :class="['sidebar', {'--is-expanded': isExpanded}]">
         <div class="sidebar-items">
-            <div class="sidebar-logo">
+            <div class="sidebar-logo" @click="onLogoClick">
                 <img src="@/static/logo.png" alt="ZenCash Logo" class="sidebar-logo-img">
             </div>
 
@@ -65,7 +65,7 @@ export default defineComponent({
         items: { type: Array, default: (): [] => [] }
     },
 
-    setup(_, { root: { $router, $accessor, $api } }) {
+    setup(_, { root: { $router, $accessor } }) {
         const isExpanded = computed(() => $accessor.ui.isExpanded)
         const isDarkMode = computed(() => $accessor.ui.isDarkMode)
         const { setDarkMode, setExpand } = uiActions(['setDarkMode', 'setExpand'])
@@ -82,25 +82,27 @@ export default defineComponent({
             $router.push({ name: routeName })
         }
 
-        $api.listenData('/companies', (snap) => {
-            const val = snap.toJSON()
-            console.log(val)
-        })
-
         function toggleExpand() {
             setExpand(!isExpanded.value)
         }
         function changeTheme() {
             setDarkMode(!isDarkMode.value)
         }
+        const companies = computed(() => $accessor.company.companies)
 
+        async function onLogoClick() {
+            // await $accessor.company.fetchCompanies()
+            await $accessor.auth.postCheck()
+        }
         return {
             icons,
             pushTo,
             isExpanded,
             toggleExpand,
             changeTheme,
-            isDarkMode
+            isDarkMode,
+            onLogoClick,
+            companies
         }
     },
 
@@ -139,7 +141,7 @@ export default defineComponent({
             place-items: center;
 
             &-img {
-                width: 90%;
+                width: 85%;
             }
         }
 
@@ -193,6 +195,7 @@ export default defineComponent({
             }
 
             &-name {
+                font-weight: 600;
                 padding-left: 10px;
                 opacity: 0;
             }

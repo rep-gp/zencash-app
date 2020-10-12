@@ -1,57 +1,9 @@
-import * as firebase from 'firebase/app'
-import 'firebase/database'
+import { Context, Plugin } from '@nuxt/types'
+import { Service } from '@/service/Service'
 
-// var rootfirebase = require('firebase');
-// var firebaseui = require('firebaseui');
-
-type FBEvent = (
-    a: firebase.database.DataSnapshot,
-    b?: string | null | undefined
-) => any
-
-const firebaseConfig = {
-    apiKey: process.env.apiKey,
-    authDomain: process.env.authDomain,
-    databaseURL: process.env.databaseURL,
-    projectId: process.env.projectId,
-    storageBucket: process.env.storageBucket,
-    messagingSenderId: process.env.messagingSenderId,
-    appId: process.env.appId,
-    measurementId: process.env.measurementId
-}
-
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig)
-}
-
-export class Service {
-    public static db = firebase.database()
-    // public static auth = firebase.auth
-
-    public static async fetchData(query: String): Promise<any> {
-        try {
-            const Ref = await Service.db.ref(`${query}`).once('value')
-
-            return Ref
-        } catch (e) {
-            console.error(`Error fetching ${query}\n${e.message}`)
-            return null
-        }
-    }
-
-    public static listenData(path: string, callback: FBEvent): FBEvent {
-        return Service.db.ref(path).on('value', callback)
-    }
-
-    public static teste(): any {
-        // return Service.auth
-        // firebase.auth().onAuthStateChanged((user) => {
-        // console.log(user)
-        // })
-    }
-}
-
-export default (context: any, inject: any) => {
-    inject('api', Service)
+const api: Plugin = (context: Context, inject) => {
     context.$api = Service
+    inject('api', Service)
 }
+
+export default api

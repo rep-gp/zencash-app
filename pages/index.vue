@@ -1,8 +1,8 @@
 <template>
     <div class="home-page">
+        {{ userList }}
         <home-score :data="834" />
         <home-cash :data="{ positive: 13004.123432, negative: 7419.043923}" />
-
     </div>
 </template>
 
@@ -10,16 +10,11 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    async asyncData({ $api, $accessor }) {
-        const data = await $api.fetchData('companies/')
-
-        await $accessor.auth.authCheck()
-
+    async asyncData({ $accessor }) {
         await $accessor.users.fetchUsers()
         const userList = $accessor.users.userList
 
         return {
-            data,
             userList
         }
     }
