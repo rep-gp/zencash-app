@@ -87,6 +87,8 @@ export default defineComponent({
 <style lang="scss">
 :root {
     --primary-text: #{$primary-text--light};
+    --secundary-text: #{$secundary-text--light};
+    --tertiary-color: #{$tertiary-color--light};
     --gray: #{$gray--light};
     --green: #{$green--light};
     --orange: #{$orange--light};
