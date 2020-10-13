@@ -28,6 +28,7 @@ export default defineComponent({
 <style lang="scss" scoped>
     .cash-container {
         height: 87.7vh;
+        padding: 0 30px;
 
         h1 {
             font-size: 40px;

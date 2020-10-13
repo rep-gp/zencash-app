@@ -53,6 +53,9 @@ export default defineComponent({
                         expandOnClick: false
                     }
                 },
+                stroke: {
+                    width: 0
+                },
                 legend: {
                     show: false
                 },

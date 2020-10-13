@@ -43,6 +43,12 @@
                 </div>
             </div>
 
+            <div v-if="token" class="theme" @click="changeTheme">
+                <div v-if="isExpanded" class="theme-text">
+                    {{ darkText }}
+                </div>
+                <icon :is="darkIcon" class="theme-icon" />
+            </div>
             <user-area :class="['user', {'--no-user': !token}]" />
         </div>
     </div>
@@ -53,6 +59,8 @@ import { defineComponent, computed } from '@vue/composition-api'
 import { createNamespacedHelpers } from 'vuex-composition-helpers'
 
 import ArrowIcon from '@/static/icons/arrow-right.svg'
+import MoonIcon from '@/static/icons/moon.svg'
+import SunIcon from '@/static/icons/sun.svg'
 import MenuIcon from '@/static/icons/menu.svg'
 import BulbIcon from '@/static/icons/bulb.svg'
 import HomeIcon from '@/static/icons/home.svg'
@@ -75,6 +83,10 @@ export default defineComponent({
     setup (_, { root: { $router, $accessor } }) {
         const isExpanded = computed(() => $accessor.ui.isExpanded)
         const isDarkMode = computed(() => $accessor.ui.isDarkMode)
+
+        const darkText = computed(() => isDarkMode.value ? 'Modo claro' : 'Modo escuro')
+        const darkIcon = computed(() => isDarkMode.value ? SunIcon : MoonIcon)
+
         const { setDarkMode, setExpand } = uiActions(['setDarkMode', 'setExpand'])
 
         const icons = computed(() => ({
@@ -104,7 +116,9 @@ export default defineComponent({
             isExpanded,
             toggleExpand,
             changeTheme,
-            isDarkMode
+            isDarkMode,
+            darkText,
+            darkIcon
         }
     },
 
@@ -230,14 +244,39 @@ export default defineComponent({
             }
 
             &-name {
-                font-weight: 600;
+                font-weight: 800;
                 padding-left: 10px;
                 opacity: 0;
             }
         }
 
+        .theme {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            opacity: .6;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &-text {
+                font-weight: 800px;
+                font-size: 20px;
+            }
+
+            &-icon {
+                width: 20px;
+                fill: var(--primary-color);
+                // stroke: var(--green);
+            }
+        }
+
         .user {
-            opacity: 0;
+            visibility: hidden;
             margin-bottom: 40px;
             margin-top: auto;
 
@@ -277,9 +316,14 @@ export default defineComponent({
             transition: $ease-in 0.16s;
         }
 
+        .theme {
+            padding: 8px 20px;
+            transition: $ease-in;
+        }
+
         .user {
             transition: $ease-in;
-            opacity: 1;
+            visibility: visible;
         }
     }
 }
