@@ -12,6 +12,7 @@
 
 <script>
 import { defineComponent, ref, computed } from '@vue/composition-api'
+
 export default defineComponent({
     setup () {
         const homeTable = ref([
@@ -40,7 +41,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home-page {
-    padding: 0 50px;
+    padding: 0 30px;
 
     .chart {
         width: 104%;

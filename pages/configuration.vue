@@ -1,17 +1,15 @@
 <template>
     <div class="company-data">
-        <pre>
+        <!-- <pre>
             {{ companyData }}
-        </pre>
+        </pre> -->
     </div>
 </template>
 
-<script>
-export default {
-    async asyncData ({ app: { $api } }) {
-        return {
-            companyData: await $api.base.get('/companies/0')
-        }
-    }
-}
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+
+})
 </script>

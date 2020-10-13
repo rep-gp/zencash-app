@@ -26,6 +26,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .expenses-page {
+    padding: 0 30px;
+
     h1 {
         font-size: 40px;
     }
