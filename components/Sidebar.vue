@@ -237,7 +237,7 @@ export default defineComponent({
         }
 
         .user {
-            opacity: 0;
+            visibility: hidden;
             margin-bottom: 40px;
             margin-top: auto;
 
@@ -279,7 +279,7 @@ export default defineComponent({
 
         .user {
             transition: $ease-in;
-            opacity: 1;
+            visibility: visible;
         }
     }
 }
