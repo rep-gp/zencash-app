@@ -5,41 +5,37 @@
                 <img src="@/static/logo.png" alt="ZenCash Logo" class="sidebar-logo-img">
             </div>
 
-            <div v-if="token">
-                <div v-for="(section,index) in items" :key="index">
-                    <h4
-                        :class="['sidebar-section', {'--is-active': isItemActive(section.route)}]"
-                        @click="pushTo(section.routeName)"
+            <div v-for="(section,index) in items" :key="index">
+                <h4
+                    :class="['sidebar-section', {'--is-active': isItemActive(section.route)}]"
+                    @click="pushTo(section.routeName)"
+                >
+                    <div class="sidebar-section-title">
+                        {{ section.section }}
+                    </div>
+
+                    <icon
+                        :is="icons[section.icon]"
+                        v-if="section.icon"
+                        class="sidebar-section-icon"
+                    />
+                </h4>
+
+                <div v-if="section.items.length">
+                    <div
+                        v-for="item in section.items"
+                        :key="item.route"
+                        :class="['sidebar-item', {'--is-active': isItemActive(item.route)}]"
+                        @click="pushTo(item.routeName)"
                     >
-                        <div class="sidebar-section-title">
-                            {{ section.section }}
+                        <div class="sidebar-item-name">
+                            {{ item.name }}
                         </div>
 
-                        <icon
-                            :is="icons[section.icon]"
-                            v-if="section.icon"
-                            class="sidebar-section-icon"
-                        />
-                    </h4>
-
-                    <div v-if="section.items.length">
-                        <div
-                            v-for="item in section.items"
-                            :key="item.route"
-                            :class="['sidebar-item', {'--is-active': isItemActive(item.route)}]"
-                            @click="pushTo(item.routeName)"
-                        >
-                            <div class="sidebar-item-name">
-                                {{ item.name }}
-                            </div>
-
-                            <icon :is="icons[item.icon]" v-if="item.icon" class="sidebar-item-icon" />
-                        </div>
+                        <icon :is="icons[item.icon]" v-if="item.icon" class="sidebar-item-icon" />
                     </div>
                 </div>
             </div>
-
-            <user-area :key="token" :class="['user', {'--no-user': !token}]" />
         </div>
     </div>
 </template>
@@ -51,6 +47,7 @@ import { createNamespacedHelpers } from 'vuex-composition-helpers'
 import MenuIcon from '@/static/icons/menu.svg'
 import BulbIcon from '@/static/icons/bulb.svg'
 import HomeIcon from '@/static/icons/home.svg'
+import PeopleIcon from '@/static/icons/people.svg'
 import TaxIcon from '@/static/icons/tax.svg'
 import ItemsIcon from '@/static/icons/items.svg'
 import WalletIcon from '@/static/icons/wallet.svg'
@@ -76,6 +73,7 @@ export default defineComponent({
             tax: TaxIcon,
             wallet: WalletIcon,
             items: ItemsIcon,
+            people: PeopleIcon,
             money: MoneyIcon,
             config: ConfigIcon
         }))

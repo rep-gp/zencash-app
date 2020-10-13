@@ -26,7 +26,7 @@ button {
     cursor: pointer;
     transition: 200ms ease;
     &:hover {
-        opacity: .5;
+        opacity: .7;
     }
 }
 </style>

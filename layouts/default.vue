@@ -39,8 +39,8 @@ export default defineComponent({
             return [
                 {
                     section: 'Home',
-                    routeName: 'index',
-                    route: '/',
+                    routeName: 'home',
+                    route: '/home',
                     icon: 'home',
                     items: []
                 },
@@ -65,7 +65,7 @@ export default defineComponent({
                         },
                         {
                             name: 'Funcionários',
-                            // icon: 'tax',
+                            icon: 'people',
                             route: '/expenses/employees',
                             routeName: 'expenses-employees'
                         }
@@ -87,6 +87,8 @@ export default defineComponent({
 <style lang="scss">
 :root {
     --primary-text: #{$primary-text--light};
+    --secundary-text: #{$secundary-text--light};
+    --tertiary-color: #{$tertiary-color--light};
     --gray: #{$gray--light};
     --green: #{$green--light};
     --orange: #{$orange--light};
