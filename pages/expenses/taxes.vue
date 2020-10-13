@@ -155,7 +155,7 @@ export default defineComponent({
             label {
                 display: block;
                 font-weight: bold;
-                color: #666;
+                color: var(--secundary-color);
                 margin-bottom: 10px;
             }
             select, input {

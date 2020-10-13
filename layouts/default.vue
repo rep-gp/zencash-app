@@ -1,5 +1,5 @@
 <template>
-    <div :class="[{'dark': isDarkMode}]">
+    <div class="dark">
         <sidebar :items="items" />
 
         <div v-if="token">
@@ -94,27 +94,43 @@ export default defineComponent({
 :root {
     --primary-text: #{$primary-text--light};
     --secundary-text: #{$secundary-text--light};
+    --tertiary-text: #{$tertiary-text--light};
+
+    --primary-color: #{$primary-color--light};
+    --secundary-color: #{$secundary-color--light};
     --tertiary-color: #{$tertiary-color--light};
-    --gray: #{$gray--light};
-    --green: #{$green--light};
-    --orange: #{$orange--light};
-    --darker-green: #{$darker-green--light};
+
+    --gray: #{$primary-gray--light};
+    --green: #{$primary-green--light};
+    --lighter-green: #{$tertiary-green--light};
+    --darker-green: #{$secundary-green--light};
+    --orange: #{$primary-orange--light};
+    --blue: #{$primary-blue--light};
 
     // background
     --primary-background: #{$primary-background--light};
-    --secondary-background: #{$secondary-background--light};
+    --secundary-background: #{$secundary-background--light};
     --tertiary-background: #{$tertiary-background--light};
 }
 .dark {
     --primary-text: #{$primary-text--dark};
-    --gray: #{$gray--dark};
-    --green: #{$green--dark};
-    --orange: #{$orange--dark};
-    --darker-green: #{$darker-green--dark};
+    --secundary-text: #{$secundary-text--dark};
+    --tertiary-text: #{$tertiary-text--dark};
+
+    --primary-color: #{$primary-color--dark};
+    --secundary-color: #{$secundary-color--dark};
+    --tertiary-color: #{$tertiary-color--dark};
+
+    --gray: #{$primary-gray--dark};
+    --green: #{$primary-green--dark};
+    --lighter-green: #{$tertiary-green--dark};
+    --darker-green: #{$secundary-green--dark};
+    --orange: #{$primary-orange--dark};
+    --blue: #{$primary-blue--dark};
 
     // background
     --primary-background: #{$primary-background--dark};
-    --secondary-background: #{$secondary-background--dark};
+    --secundary-background: #{$secundary-background--dark};
     --tertiary-background: #{$tertiary-background--dark};
 }
 html {
@@ -136,8 +152,6 @@ html {
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    // color: #202020;
-    // background-color: var(--primary-background) !important;
 }
 
 *,
@@ -152,7 +166,7 @@ html {
     padding-left: ($sidebar-tiny-width + 40px);
     transition: $ease-out;
     background-color: var(--primary-background);
-    color: var(--main-color);
+    color: var(--primary-text);
 
     &.--is-expanded {
         padding-left: ($sidebar-width + 40px);
@@ -160,7 +174,7 @@ html {
     }
 
     h1 {
-        color: #555;
+        color: var(--primary-text);
         margin-bottom: 30px;
         font-weight: 900;
     }

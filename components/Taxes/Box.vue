@@ -50,13 +50,13 @@ export default {
 
 .box {
     padding: 15px;
-    border: 2px solid $green--light;
+    border: 2px solid $primary-green--light;
     border-radius: 6px;
-    color: #555;
+    color: var(--primary-text);
     .title {
         font-weight: bold;
         font-size: 20pt;
-        color: $green--light;
+        color: $primary-green--light;
         margin-bottom: 20px;
     }
     .table {
@@ -73,7 +73,7 @@ export default {
                 border-bottom: 1px solid #aaa;
             }
             &.--is-solid {
-                color: #000;
+                color: var(--primary-color);
                 padding: 15px 5px;
                 font-weight: bold;
             }

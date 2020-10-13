@@ -1,16 +1,15 @@
-
 * {
     &::-webkit-scrollbar {
         width: 5px;
         height: 5px;
     }
     &::-webkit-scrollbar-track {
-        background: #eef6f1 !important;
+        background: var(--primary-background) !important;
         cursor: pointer;
     }
 
     &::-webkit-scrollbar-thumb {
-        background: #85b989;
+        background: var(--lighter-green);
         border-radius: 4px;
     }
 }
@@ -27,4 +26,6 @@ $sidebar-transition-duration: 250ms;
 $ease-in: cubic-bezier(0.445, 0.05, 0.55, 0.95) $sidebar-transition-duration;
 $ease-out: cubic-bezier(0.39, 0.575, 0.565, 1) $sidebar-transition-duration;
 
-.--capitalize { text-transform: capitalize; }
+.--capitalize {
+    text-transform: capitalize;
+}

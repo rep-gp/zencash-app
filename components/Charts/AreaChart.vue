@@ -25,7 +25,7 @@ export default {
                 curve: 'smooth'
             },
             grid: { show: false },
-            colors: ['#00000099', '#DA883C99', '#3CDA7D99'],
+            colors: ['var(--primary-text)', '#DA883C99', '#3CDA7D99'],
             fill: { type: 'solid' },
             dataLabels: { enabled: false },
             legend: { show: false },

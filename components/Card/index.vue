@@ -46,16 +46,16 @@ export default defineComponent({
 
 <style lang="scss" scoped>
     .card-container {
-        background-color: white;
+        background-color: var(--primary-background);
         border-radius: 5px;
 
-        border: 1px solid var(--secondary-background)
+        border: 1px solid var(--secundary-background)
     }
 
     .card-title {
         font-weight: 600;
         font-size: 1.8vh;
-        color: #413f4d
+        color: var(--secundary-text)
     }
 
     .card-value {

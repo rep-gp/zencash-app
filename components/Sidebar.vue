@@ -1,7 +1,7 @@
 <template>
     <div :key="token" :class="['sidebar', {'--is-expanded': isExpanded}]">
         <div class="sidebar-arrow" @click="toggleExpand">
-            <arrow-icon :class="['sidebar-arrow-icon', {'--left': isExpanded}]"/>
+            <arrow-icon :class="['sidebar-arrow-icon', {'--left': isExpanded}]" />
         </div>
         <div class="sidebar-items">
             <div class="sidebar-logo">
@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <user-area :class="['user', {'--no-user': !token}]"/>
+            <user-area :class="['user', {'--no-user': !token}]" />
         </div>
     </div>
 </template>
@@ -123,7 +123,7 @@ export default defineComponent({
     height: 100vh;
     position: fixed;
     z-index: 999;
-    background: var(--main-background);
+    background: var(--primary-background);
     border-right: 1px solid var(--green);
     transition: $ease-out;
     cursor: initial;
@@ -133,7 +133,7 @@ export default defineComponent({
         position: absolute;
         border-radius: 0 10px 10px 0;
         background: var(--green);
-        color: #fff;
+        color: var(--primary-background);
         font-weight: 900;
         top: 60px; left: $sidebar-tiny-width;
         width: 20px;
@@ -143,7 +143,7 @@ export default defineComponent({
 
         &-icon {
             height: 20px;
-            fill: #fff;
+            fill: var(--primary-background);
             margin: 2px;
             padding-left: 2px;
 

@@ -40,7 +40,7 @@ export default defineComponent({
 }
 
 .color{
-    margin-top: 10%;
+    margin-top: 6%;
     margin-right: 10%;
     height: 1.5vh;
     width: 1.5vh;
@@ -49,7 +49,7 @@ export default defineComponent({
 
 .description {
     font-size: 1.5vh;
-    color: #3d3838;
+    color: var(--primary-color);
     font-weight: 300
 }
 </style>
