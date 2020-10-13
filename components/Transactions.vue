@@ -1,13 +1,13 @@
 <template>
     <div class="container">
         <div class="transactions_container">
-            <TransactionHeader class="transaction_header" />
+            <TableHeader class="transaction_header" :list="headers" />
             <div class="transactions_content">
                 <div v-if="!transactions">
                     Nenhuma transação para mostrar
                 </div>
                 <div v-if="transactions">
-                    <TransactionRow v-for="(transaction, idx) in transactions.jan" :key="idx" :transaction="transaction" />
+                    <TableRow v-for="(transaction, idx) in transactions.jan" :key="idx" :transaction="transaction" />
                 </div>
             </div>
         </div>
@@ -21,8 +21,10 @@ export default defineComponent({
     name: 'Transactions',
 
     setup (_, { root: { $accessor } }) {
+        const headers = ['Transação', 'Tipo', 'Data', 'Quantia', 'Método']
+
         $accessor.transactions.setTransactions()
-        return { transactions: computed(() => $accessor.transactions.transactions) }
+        return { transactions: computed(() => $accessor.transactions.transactions), headers }
     }
 })
 </script>
@@ -46,5 +48,9 @@ export default defineComponent({
         flex: 1;
         width: 100%;
         overflow-y: auto;
+    }
+
+    .transaction_header {
+        margin: 0% 7% 0% 7%;
     }
 </style>

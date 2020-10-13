@@ -92,6 +92,7 @@ export default defineComponent({
     --gray: #{$gray--light};
     --green: #{$green--light};
     --orange: #{$orange--light};
+    --darker-green: #{$darker-green--light};
 
     // background
     --primary-background: #{$primary-background--light};
@@ -103,6 +104,7 @@ export default defineComponent({
     --gray: #{$gray--dark};
     --green: #{$green--dark};
     --orange: #{$orange--dark};
+    --darker-green: #{$darker-green--dark};
 
     // background
     --primary-background: #{$primary-background--dark};

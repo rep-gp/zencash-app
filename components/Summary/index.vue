@@ -59,7 +59,7 @@ export default defineComponent({
     align-self: flex-start;
     margin-top: 2.3vh;
     align-items: center;
-    background-color:#00202E;
+    background-color: var(--darker-green);
     border-radius: 5px;
     height: 40vh;
     margin-left: 2%;
