@@ -9,7 +9,7 @@ import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
     name: 'Expenses',
-    setup() {
+    setup () {
         const headers = ['1', '2', '3']
 
         return {
