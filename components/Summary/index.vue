@@ -63,7 +63,6 @@ export default defineComponent({
     border-radius: 5px;
     height: 40vh;
     margin-left: 2%;
-    color: var(--primary-background);
     padding: 1.5% 2% 1.5% 2%;
     border: 1px solid var(--secundary-background)
 }

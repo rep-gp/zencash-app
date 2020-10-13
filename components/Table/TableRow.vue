@@ -93,6 +93,10 @@ export default defineComponent({
     padding-left: 2%;
     padding-right: 1%;
     margin-right: 2%;
+
+    svg {
+        fill: var(--primary-text)
+    }
 }
 
 .date{
@@ -107,6 +111,13 @@ export default defineComponent({
     padding-left: 2%;
     padding-right: 0%;
     justify-content: flex-start;
+
+    svg {
+        path{
+            fill: var(--primary-text)!important
+
+        }
+    }
 }
 
 .type {
@@ -132,7 +143,11 @@ export default defineComponent({
 .column_icon{
     height: 2vh;
     width: 2vh;
-    margin-right: 10%
+    margin-right: 10%;
+
+    svg {
+        fill: var(--primary-text)!important;
+    }
 }
 
 .entrada {

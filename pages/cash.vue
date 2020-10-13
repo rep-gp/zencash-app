@@ -27,7 +27,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
     .cash-container {
-        height: 80vh;
+        height: 87.7vh;
 
         h1 {
             font-size: 40px;
@@ -37,7 +37,7 @@ export default defineComponent({
     .cash-content {
         display: flex;
         flex-direction: row;
-        height: 100%;
+        height: 90%;
         align-items: center;
     }
 
