@@ -26,13 +26,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-    .cash-container {
-        height: 80vh;
+.cash-container {
+    height: 80vh;
+    padding: 0 30px;
 
-        h1 {
-            font-size: 40px;
-        }
+    h1 {
+        font-size: 40px;
     }
+}
 
     .cash-content {
         display: flex;

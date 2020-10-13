@@ -76,14 +76,14 @@ export default defineComponent({
                             routeName: 'expenses-employees'
                         }
                     ]
-                },
-                {
-                    section: 'Configurações',
-                    routeName: 'configuration',
-                    route: '/configuration',
-                    icon: 'config',
-                    items: []
                 }
+                // {
+                //     section: 'Configurações',
+                //     routeName: 'configuration',
+                //     route: '/configuration',
+                //     icon: 'config',
+                //     items: []
+                // }
             ]
         }
     }
