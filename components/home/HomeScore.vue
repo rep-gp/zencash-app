@@ -35,7 +35,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home-score {
-    margin: 60px 0;
+    margin: 50px 0;
     position: relative;
 
     &-card {
@@ -43,7 +43,7 @@ export default defineComponent({
         top: -50px;
         left: 44%;
         z-index: 10;
-        background: var(--main-background);
+        background: var(--primary-background) !important;
         padding: 0 16px;
 
         & > h1 {

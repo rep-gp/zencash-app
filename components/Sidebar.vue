@@ -1,41 +1,49 @@
 <template>
     <div :key="token" :class="['sidebar', {'--is-expanded': isExpanded}]">
+        <div class="sidebar-arrow" @click="toggleExpand">
+            <arrow-icon :class="['sidebar-arrow-icon', {'--left': isExpanded}]"/>
+        </div>
         <div class="sidebar-items">
             <div class="sidebar-logo">
-                <img src="@/static/logo.png" alt="ZenCash Logo" class="sidebar-logo-img">
+                <img v-if="isExpanded" src="@/static/logo.png" alt="ZenCash Logo" class="sidebar-logo-img">
+                <img v-else src="@/static/icon.png" alt="ZenCash Icon" class="sidebar-logo-icon">
             </div>
 
-            <div v-for="(section,index) in items" :key="index">
-                <h4
-                    :class="['sidebar-section', {'--is-active': isItemActive(section.route)}]"
-                    @click="pushTo(section.routeName)"
-                >
-                    <div class="sidebar-section-title">
-                        {{ section.section }}
-                    </div>
-
-                    <icon
-                        :is="icons[section.icon]"
-                        v-if="section.icon"
-                        class="sidebar-section-icon"
-                    />
-                </h4>
-
-                <div v-if="section.items.length">
-                    <div
-                        v-for="item in section.items"
-                        :key="item.route"
-                        :class="['sidebar-item', {'--is-active': isItemActive(item.route)}]"
-                        @click="pushTo(item.routeName)"
+            <div v-if="token">
+                <div v-for="(section,index) in items" :key="index">
+                    <h4
+                        :class="['sidebar-section', {'--is-active': isItemActive(section.route)}]"
+                        @click="pushTo(section.routeName)"
                     >
-                        <div class="sidebar-item-name">
-                            {{ item.name }}
+                        <div v-if="isExpanded" class="sidebar-section-title">
+                            {{ section.section }}
                         </div>
 
-                        <icon :is="icons[item.icon]" v-if="item.icon" class="sidebar-item-icon" />
+                        <icon
+                            :is="icons[section.icon]"
+                            v-if="section.icon"
+                            class="sidebar-section-icon"
+                        />
+                    </h4>
+
+                    <div v-if="section.items.length">
+                        <div
+                            v-for="item in section.items"
+                            :key="item.route"
+                            :class="['sidebar-item', {'--is-active': isItemActive(item.route)}]"
+                            @click="pushTo(item.routeName)"
+                        >
+                            <div v-if="isExpanded" class="sidebar-item-name">
+                                {{ item.name }}
+                            </div>
+
+                            <icon :is="icons[item.icon]" v-if="item.icon" class="sidebar-item-icon" />
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <user-area :class="['user', {'--no-user': !token}]"/>
         </div>
     </div>
 </template>
@@ -44,6 +52,7 @@
 import { defineComponent, computed } from '@vue/composition-api'
 import { createNamespacedHelpers } from 'vuex-composition-helpers'
 
+import ArrowIcon from '@/static/icons/arrow-right.svg'
 import MenuIcon from '@/static/icons/menu.svg'
 import BulbIcon from '@/static/icons/bulb.svg'
 import HomeIcon from '@/static/icons/home.svg'
@@ -57,7 +66,7 @@ import ConfigIcon from '@/static/icons/config.svg'
 const { useActions: uiActions } = createNamespacedHelpers('ui')
 
 export default defineComponent({
-    components: { MenuIcon, BulbIcon },
+    components: { MenuIcon, BulbIcon, ArrowIcon },
 
     props: {
         items: { type: Array, default: (): [] => [] }
@@ -119,6 +128,33 @@ export default defineComponent({
     transition: $ease-out;
     cursor: initial;
 
+    &-arrow {
+        transition: $ease-in;
+        position: absolute;
+        border-radius: 0 10px 10px 0;
+        background: var(--green);
+        color: #fff;
+        font-weight: 900;
+        top: 60px; left: $sidebar-tiny-width;
+        width: 20px;
+        height: 66px;
+        cursor: pointer;
+        padding: 20px 0;
+
+        &-icon {
+            height: 20px;
+            fill: #fff;
+            margin: 2px;
+            padding-left: 2px;
+
+            &.--left {
+                padding-left: 4px;
+                transition: $ease-in;
+                transform: rotate(.5turn);
+            }
+        }
+    }
+
     &-items {
         height: 100%;
         display: flex;
@@ -126,30 +162,29 @@ export default defineComponent({
         overflow: hidden;
         padding: 0 20px;
 
-        .user {
-            margin-bottom: 40px;
-            margin-top: auto;
-
-            &.--no-user {
-                margin-top: 40px;
-            }
-        }
-
         .sidebar-logo {
-            width: 200px;
+            min-height: 70px;
             margin: 60px auto;
             display: grid;
             place-items: center;
 
             &-img {
                 width: 85%;
+                transition: $ease-in;
+            }
+
+            &-icon {
+                object-fit: contain;
+                height: 50px;
+                width: 50px;
+                transition: $ease-in;
             }
         }
 
         .sidebar-item, .sidebar-section {
+            padding: 8px;
             font-weight: 800px;
             font-size: 20px;
-            padding: 8px 20px;
             opacity: .6;
             cursor: pointer;
 
@@ -200,11 +235,30 @@ export default defineComponent({
                 opacity: 0;
             }
         }
+
+        .user {
+            opacity: 0;
+            margin-bottom: 40px;
+            margin-top: auto;
+
+            &.--no-user {
+                margin-top: 40px;
+            }
+        }
     }
 
     &.--is-expanded {
         width: $sidebar-width;
         transition: $ease-in;
+
+        .sidebar-item, .sidebar-section {
+            padding: 8px 20px;
+        }
+
+        .sidebar-arrow {
+            left: $sidebar-width;
+            transition: $ease-in;
+        }
 
         .sidebar-section-title {
             opacity: 1;
@@ -221,6 +275,11 @@ export default defineComponent({
             opacity: 1;
             max-height: 44px;
             transition: $ease-in 0.16s;
+        }
+
+        .user {
+            transition: $ease-in;
+            opacity: 1;
         }
     }
 }

@@ -1,7 +1,8 @@
 <template>
     <div class="home-next">
-        <h2> Próxima Despesa </h2>
         <div class="card">
+            <h2> Próxima Despesa: </h2>
+
             <div class="card-title">
                 {{ expense.gasto }}
             </div>
@@ -16,7 +17,7 @@
 
         <div class="balance">
             <h2> Balanço </h2>
-            <currency font-size="36px">
+            <currency font-size="40px">
                 {{ balance.toFixed(2).replace('.', ',') }}
             </currency>
         </div>
@@ -43,14 +44,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home-next {
-    height: 100%;
-
-    h2 { color: var(--tertiary-color); }
+    // height: 100%;
 
     .card {
         border-radius: 4px;
         width: 100%;
-        padding: 6px;
+        padding: 6px 10px;
         border: 1px solid var(--secondary-background);
 
         &-title {
@@ -75,11 +74,13 @@ export default defineComponent({
     }
 
     .balance {
-        padding: 6px;
+        padding: 6px 10px;
         border: 1px solid var(--secondary-background);
         border-radius: 4px;
         text-align: right;
         margin-top: 20px;
+
+        h2 { color: var(--tertiary-color); }
     }
 }
 </style>

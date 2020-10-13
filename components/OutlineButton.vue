@@ -25,8 +25,8 @@ button {
     background: var(--main-background);
     cursor: pointer;
     transition: 200ms ease;
-    &:hover {
-        opacity: .7;
-    }
+    opacity: .6;
+
+    &:hover { opacity: 1; }
 }
 </style>
