@@ -46,7 +46,10 @@ export default defineComponent({
                     colors: ['transparent']
                 },
                 xaxis: {
-                    categories: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
+                    categories: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                    labels: {
+                        style: { colors: '#777' }
+                    }
                 },
                 yaxis: {
                     opposite: true,

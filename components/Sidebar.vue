@@ -44,7 +44,7 @@
             </div>
 
             <div v-if="token" class="theme"  @click="changeTheme">
-                <div class="theme-text">{{ darkText }}</div>
+                <div v-if="isExpanded" class="theme-text">{{ darkText }}</div>
                 <icon :is="darkIcon" class="theme-icon" />
             </div>
             <user-area :class="['user', {'--no-user': !token}]"/>
@@ -253,7 +253,7 @@ export default defineComponent({
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 20px;
+            padding: 12px;
             opacity: .6;
             cursor: pointer;
 
@@ -268,7 +268,7 @@ export default defineComponent({
 
             &-icon {
                 width: 20px;
-                // fill: var(--green);
+                fill: var(--primary-color);
                 // stroke: var(--green);
             }
         }
@@ -312,6 +312,11 @@ export default defineComponent({
             opacity: 1;
             max-height: 44px;
             transition: $ease-in 0.16s;
+        }
+
+        .theme {
+            padding: 8px 20px;
+            transition: $ease-in;
         }
 
         .user {
