@@ -29,8 +29,14 @@ export default {
             fill: { type: 'solid' },
             dataLabels: { enabled: false },
             legend: { show: false },
+            chart: {
+                toolbar: {
+                    show: false,
+                    tools: { zoom: false }
+                }
+            },
             xaxis: {
-                categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                categories: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
                 labels: {
                     style: { colors: '#777' }
                 }
