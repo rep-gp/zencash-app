@@ -1,28 +1,33 @@
 <template>
     <div class="summary-container">
         <div class="summary-title">
-            Summary
+            Sumário
         </div>
 
         <div class="section">
             <div class="section-title">
-                Gains
+                Entradas
             </div>
             <SummaryRow v-for="data in transactionsData" :key="data.value" :data="data" />
         </div>
 
-        <div class="section">
-            <div class="section-title">
-                Gains
+        <div class="summary-finish">
+            <div class="summary-finish-item">
+                <div class="summary-finish-title">
+                    Saldo
+                </div>
+                <div class="summary-finish-value">
+                    R$ 12.304,00
+                </div>
             </div>
-            <SummaryRow v-for="data in transactionsData" :key="data.value" :data="data" />
-        </div>
-        <div class="balance">
-            <div class="balance-title">
-                Balance
-            </div>
-            <div class="balance-value">
-                R$ 12.304,00
+
+            <div class="summary-finish-item">
+                <div class="summary-finish-title">
+                    Saque Rápido Temporário
+                </div>
+                <div class="summary-finish-value saque">
+                    R$ 2.607,00
+                </div>
             </div>
         </div>
     </div>
@@ -35,10 +40,10 @@ export default defineComponent({
     name: 'Summary',
     data () {
         const transactionsData = [
-            { title: 'Total transactions received', value: 6 },
-            { title: 'Sum of entries', value: 600 },
-            { title: 'Average ticket', value: 0.0123 },
-            { title: 'Credit card transactions', value: 50 }
+            { title: 'Total de Transações Recebidas', value: 12 },
+            { title: 'Soma de Entradas', value: 10.146, money: true },
+            { title: 'Ticket Médio', value: 153.51, money: true },
+            { title: 'Total de Transações no Cartão de Crédito', value: 50, money: true }
         ]
         return {
             transactionsData
@@ -51,10 +56,12 @@ export default defineComponent({
 .summary-container {
     display: flex;
     flex-direction: column;
+    align-self: flex-start;
+    margin-top: 2.3vh;
     align-items: center;
     background-color:#00202E;
     border-radius: 5px;
-    height: 75vh;
+    height: 40vh;
     margin-left: 2%;
     color: white;
     padding: 1.5% 2% 1.5% 2%;
@@ -87,21 +94,41 @@ export default defineComponent({
 
 .balance {
     display: flex;
-    margin-top: auto;
-    margin-bottom: auto;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 
-.balance-title {
+.summary-finish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto
+}
+
+.summary-finish-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.summary-finish-title {
     font-size: 1.1rem;
     font-weight: 500
 }
 
-.balance-value {
+.summary-finish-value {
     font-size: 1.1rem;
     font-weight: 500;
     color: #1691c5
+}
+
+.saque{
+    color: var(--green)
 }
 </style>

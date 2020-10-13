@@ -1,19 +1,19 @@
 <template>
     <div class="transaction_header">
         <div class="column with">
-            With
+            Transação
         </div>
         <div class="column type">
-            Type
+            Tipo
         </div>
         <div class="column date">
-            Date
+            Data
         </div>
         <div class="column value">
-            Amount
+            Quantia
         </div>
         <div class="column method">
-            Method
+            Método
         </div>
     </div>
 </template>

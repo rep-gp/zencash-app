@@ -4,7 +4,7 @@
         <div class="cash-content">
             <div class="left-column">
                 <div class="main-stats">
-                    <CardChart title="Week Sales" class="chart">
+                    <CardChart title="Vendas da Semana" class="chart">
                         <ColumnChart />
                     </CardChart>
 
