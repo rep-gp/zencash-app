@@ -51,7 +51,6 @@ export default defineComponent({
 <style lang="scss" scoped>
     .expenses-container {
         border-radius: 5px;
-        border: 1px solid var(--secondary-background);
     }
 
     .expenses-rows{

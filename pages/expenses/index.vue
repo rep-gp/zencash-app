@@ -37,7 +37,7 @@ export default defineComponent({
 
 .expenses-list {
     flex: 1;
-    margin-right: 1%;
+    margin-right: 2%;
 }
 
 .donut-chart {
