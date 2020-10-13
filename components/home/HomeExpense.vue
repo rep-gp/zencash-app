@@ -9,6 +9,7 @@
             <currency class="card-value" font-size="40px" orange>
                 {{ expense.valor.toFixed(2).replace('.', ',') }}
             </currency>
+
             <div class="card-date">
                 Dia {{ parsedDate }}
             </div>
@@ -45,7 +46,10 @@ export default defineComponent({
 .home-next {
     height: 100%;
 
-    h2 { color: var(--tertiary-color); }
+    h2 {
+        color: var(--tertiary-color);
+        margin-bottom: 10px;
+    }
 
     .card {
         border-radius: 4px;
@@ -54,31 +58,29 @@ export default defineComponent({
         border: 1px solid var(--secondary-background);
 
         &-title {
-            text-align: center;
             font-size: 26px;
             font-weight: 500;
             margin-top: 20px;
+            margin-left: 20px;
         }
 
         &-value {
-            text-align: center;
+            margin-left: 20px;
         }
 
         &-date {
-            text-align: right;
             font-weight: 600;
-            margin-top: 20px;
-            color: var(--tertiary-color);
-            justify-items: flex-end;
-            font-size: 30px;
+            margin-left: 20px;
+            margin-bottom: 30px;
+            color: #aaa;
+            font-size: 13pt;
         }
     }
 
     .balance {
-        padding: 6px;
+        padding: 20px;
         border: 1px solid var(--secondary-background);
         border-radius: 4px;
-        text-align: right;
         margin-top: 20px;
     }
 }

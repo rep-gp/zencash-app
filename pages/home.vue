@@ -18,7 +18,7 @@ export default defineComponent({
             { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-11-03') },
             { gasto: 'Aluguel', valor: 324.43, data: new Date('2020-11-02') },
             { gasto: 'Conta de luz', valor: 41.05, data: new Date('2020-11-01') },
-            { gasto: 'Conta de agua', valor: 2174.465, data: new Date('2020-10-20') },
+            { gasto: 'Conta de água', valor: 2174.465, data: new Date('2020-10-20') },
             { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-10') },
             { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-02') },
             { gasto: 'Conta de luz', valor: 414.465, data: new Date('2020-10-01') },
