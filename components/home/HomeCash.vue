@@ -27,7 +27,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home-cash {
-    margin-top: 100px;
+    margin-top: 80px;
     display: flex;
     width: 95%;
     align-items: center;

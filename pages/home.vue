@@ -41,8 +41,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 .home-page {
     padding: 0 50px;
+
     .chart {
-        margin-top: 30px;
+        width: 104%;
+        margin: 0 auto;
+        margin-top: 20px;
     }
     .grid {
         margin-top: 30px;

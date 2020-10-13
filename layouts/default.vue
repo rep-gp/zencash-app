@@ -1,12 +1,19 @@
 <template>
     <div :class="[{'dark': isDarkMode}]">
         <sidebar :items="items" />
-        <div :class="['main-container', {'--is-expanded': isExpanded}]">
-            <div v-if="token">
+
+        <div v-if="token">
+            <div :class="['main-container', {'--is-expanded': isExpanded}]">
                 <nuxt />
             </div>
-            <div v-else>
-                singin
+        </div>
+
+        <div v-else class="error">
+            <div class="unauthorized">
+                401
+                <div class="unauthorized-text">
+                    Unauthorized
+                </div>
             </div>
         </div>
     </div>
@@ -24,11 +31,10 @@ export default defineComponent({
             if (user) {
                 AuthService.setUser(user)
                 this.$ls.set('token', user.uid)
-                console.log('on by dlayout')
             } else {
-                this.$router.push('/')
                 AuthService.setUser(null)
                 this.$ls.set('token', '')
+                this.$router.push('/')
             }
         })
     },
@@ -143,12 +149,13 @@ html {
 
 .main-container {
     padding: 60px;
+    padding-left: ($sidebar-tiny-width + 40px);
     transition: $ease-out;
     background-color: var(--primary-background);
     color: var(--main-color);
 
     &.--is-expanded {
-        padding-left: ($sidebar-width + 32px);
+        padding-left: ($sidebar-width + 40px);
         transition: $ease-in;
     }
 
@@ -156,6 +163,23 @@ html {
         color: #555;
         margin-bottom: 30px;
         font-weight: 900;
+    }
+}
+
+.error {
+    height: 80vh;
+    display: grid;
+    place-items: center;
+
+    .unauthorized {
+        font-size: 8vw;
+        text-align: center;
+        color: var(--green);
+        font-weight: 800;
+
+        &-text {
+            font-size: 2vw;
+        }
     }
 }
 

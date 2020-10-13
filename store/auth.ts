@@ -33,8 +33,8 @@ export const actions: ActionTree<State, State> = {
             if (_user) {
                 AuthService.setUser(_user)
             } else {
-                this.$router.push('/')
                 AuthService.setUser(null)
+                this.$router.push('/')
             }
         })
 

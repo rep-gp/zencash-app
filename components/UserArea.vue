@@ -39,7 +39,6 @@
 <script>
 import { mapActions } from 'vuex'
 import { defineComponent } from '@vue/composition-api'
-// import { AuthService } from '@/service/AuthService'
 
 export default defineComponent({
     data: () => ({
@@ -59,6 +58,7 @@ export default defineComponent({
         async onLogout () {
             await this.logout()
             this.checkUser()
+            this.$router.push('/')
         }
     }
 })
