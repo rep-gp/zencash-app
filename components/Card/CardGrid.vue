@@ -2,30 +2,32 @@
     <div class="grid column-1">
         <div class="column-1">
             <Card
-                title="Total Sales"
+                title="Total de Vendas"
                 :value="Number(total_sales.value)"
                 :percentage="Number(total_sales.percentage)"
+                :money="total_sales.money"
                 class="card-grid"
             />
 
             <Card
-                title="Sales Today"
+                title="Vendas de Hoje"
                 :value="Number(sales_today.value)"
                 :percentage="Number(sales_today.percentage)"
+                :money="sales_today.money"
                 class="card-grid"
             />
         </div>
 
         <div class="column-1">
             <Card
-                title="Total Clients"
+                title="Total de Clientes"
                 :value="Number(total_clients.value)"
                 :percentage="Number(total_clients.percentage)"
                 class="card-grid"
             />
 
             <Card
-                title="Mounth Paid Bills"
+                title="Total de Contas Mensais"
                 :value="Number(month_paid_bills.value)"
                 :total="Number(month_paid_bills.total)"
                 :percentage="Number(month_paid_bills.percentage)"
@@ -43,21 +45,25 @@ export default defineComponent({
     setup () {
         return {
             total_sales: {
-                value: 1000,
-                percentage: 60
+                value: 24.653,
+                percentage: 60,
+                money: true
             },
             sales_today: {
-                value: 1000,
-                percentage: -20
+                value: 783.19,
+                percentage: -20,
+                money: true
             },
             total_clients: {
-                value: 1000,
-                percentage: 12
+                value: 2562,
+                percentage: 12,
+                money: false
             },
             month_paid_bills: {
                 value: 3,
-                total: 33,
-                percentage: -17
+                total: 17,
+                percentage: -17,
+                money: false
             }
         }
     }

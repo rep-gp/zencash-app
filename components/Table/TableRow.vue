@@ -20,7 +20,7 @@
             <span>{{ transaction.value }}</span>
         </div>
         <div class="column method">
-            <paymentIcons :is="paymentIcons[String(transaction.payment_method).replace(' ', '_')]" v-if="transaction.payment_method" class="column_icon" />
+            <paymentIcons :is="paymentIcons[String(transaction.payment_method).replaceAll(' ', '_')]" v-if="transaction.payment_method" class="column_icon" />
             <span>{{ transaction.payment_method }}</span>
         </div>
     </div>
@@ -49,8 +49,8 @@ export default defineComponent({
 
     setup () {
         const paymentIcons = computed(() => ({
-            credit_card: GetnetIcon,
-            money: MoneyIcon
+            cartao_de_credito: GetnetIcon,
+            dinheiro: MoneyIcon
         }))
 
         return {
@@ -97,7 +97,7 @@ export default defineComponent({
 
 .date{
     font-weight: 700;
-    font-size: 2vh;
+    font-size: 1.8vh;
 }
 
 .with {
@@ -111,7 +111,7 @@ export default defineComponent({
 
 .type {
     font-weight: 700;
-    font-size: 2vh;
+    font-size: 1.8vh;
     margin-right: 2%;
     margin-left: 2%;
 }
@@ -120,12 +120,12 @@ export default defineComponent({
     text-transform: capitalize;
     justify-content: flex-start;
     color: #535366;
-    font-size: 1.8vh;
+    font-size: 1.5vh;
 }
 
 .value {
     font-weight: 700;
-    font-size: 2vh;
+    font-size: 1.8vh;
     color: #535366;
 }
 
@@ -135,11 +135,11 @@ export default defineComponent({
     margin-right: 10%
 }
 
-.sell {
+.entrada {
     color: var(--green)
 }
 
-.bill {
+.saida {
     color: var(--orange)
 }
 </style>
