@@ -44,7 +44,7 @@ export default defineComponent({
                 tooltip: {
                     enabled: false
                 },
-                colors: ['#005c39', 'var(--green)', '#9cd6e7', '#caf0f1', '#4EAEC2'],
+                colors: ['var(--darker-green)', 'var(--green)', '#9cd6e7', '#caf0f1', '#4EAEC2'],
                 dataLabels: {
                     enabled: false
                 },
