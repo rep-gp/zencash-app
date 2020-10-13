@@ -36,7 +36,7 @@ import BillIcon from '@/static/icons/bill.svg'
 import AvatarIcon from '@/static/icons/avatar.svg'
 
 export default defineComponent({
-    name: 'TransactionRow',
+    name: 'TableRow',
     components: {
         GetnetIcon,
         MoneyIcon,

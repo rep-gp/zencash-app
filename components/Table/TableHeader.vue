@@ -1,19 +1,7 @@
 <template>
     <div class="transaction_header">
-        <div class="column with">
-            With
-        </div>
-        <div class="column type">
-            Type
-        </div>
-        <div class="column date">
-            Date
-        </div>
-        <div class="column value">
-            Amount
-        </div>
-        <div class="column method">
-            Method
+        <div v-for="item in list" :key="item" class="column">
+            {{ item }}
         </div>
     </div>
 </template>
@@ -22,7 +10,10 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    name: 'TransactionHeader'
+    name: 'TableHeader',
+    props: {
+        list: { type: Array, default: [] }
+    }
 })
 
 </script>
@@ -34,7 +25,6 @@ export default defineComponent({
     height: 8vh;
     align-items: center;
     justify-content: space-around;
-    margin: 0% 7% 0% 7%;
     border-bottom: 1px solid var(--green);
 }
 
