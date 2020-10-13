@@ -76,7 +76,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .transaction_row{
     display: flex;
-    background-color: white;
+    background-color: var(--primary-background);
     align-items: center;
     border-bottom: 1px solid #d4d5db;
     height: 35px;
@@ -93,6 +93,10 @@ export default defineComponent({
     padding-left: 2%;
     padding-right: 1%;
     margin-right: 2%;
+
+    svg {
+        fill: var(--primary-text)
+    }
 }
 
 .date{
@@ -107,6 +111,13 @@ export default defineComponent({
     padding-left: 2%;
     padding-right: 0%;
     justify-content: flex-start;
+
+    svg {
+        path{
+            fill: var(--primary-text)!important
+
+        }
+    }
 }
 
 .type {
@@ -119,20 +130,24 @@ export default defineComponent({
 .method {
     text-transform: capitalize;
     justify-content: flex-start;
-    color: #535366;
+    color: var(--secundary-text);
     font-size: 1.5vh;
 }
 
 .value {
     font-weight: 700;
     font-size: 1.8vh;
-    color: #535366;
+    color: var(--secundary-text);
 }
 
 .column_icon{
     height: 2vh;
     width: 2vh;
-    margin-right: 10%
+    margin-right: 10%;
+
+    svg {
+        fill: var(--primary-text)!important;
+    }
 }
 
 .entrada {

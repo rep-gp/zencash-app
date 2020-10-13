@@ -34,10 +34,9 @@ export default defineComponent({
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: #e6e6e6;
         border-radius: 5px;
         height: 50vh;
-        background-color: white;
+        background-color: var(--primary-background);
         overflow-x: hidden;
 
     }

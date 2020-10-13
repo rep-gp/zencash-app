@@ -25,16 +25,16 @@ export default defineComponent({
     .card-container {
         flex: 1;
         padding: 1.5% 1.5% 0% 1.5%;
-        background-color: white;
+        background-color: var(--primary-background);
         border-radius: 5px;
 
-        border: 1px solid var(--secondary-background)
+        border: 1px solid var(--secundary-background)
     }
 
     .card-title {
         font-weight: 600;
         font-size: 2vh;
-        color: #413f4d
+        color: var(--secundary-text)
     }
 
     .chart {

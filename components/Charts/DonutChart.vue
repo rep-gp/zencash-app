@@ -44,7 +44,7 @@ export default defineComponent({
                 tooltip: {
                     enabled: false
                 },
-                colors: ['var(--darker-green)', 'var(--green)', '#9cd6e7', '#caf0f1', '#4EAEC2'],
+                colors: ['var(--darker-green)', 'var(--green)', '#9cd6e7', '#caf0f1', 'var(--blue)'],
                 dataLabels: {
                     enabled: false
                 },
@@ -75,7 +75,7 @@ export default defineComponent({
 .chart-container{
     display: flex;
     flex-direction: row;
-    max-height: 40vh
+    max-height: 35vh
 }
 
 .chart {

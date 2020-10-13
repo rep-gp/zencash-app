@@ -32,7 +32,7 @@ export default defineComponent({
     flex: 1;
     font-weight: 700;
     font-size: 0.9rem;
-    color: #535366;
+    color: var(--secundary-text);
     border-right: 1px solid #bfc0ca;
     text-align: center;
 

@@ -20,7 +20,7 @@ button {
     padding: 12px 18px;
     font-size: 13pt;
     font-weight: 700;
-    color: white;
+    color: var(--primary-background);
     background: var(--green);
     border: 0;
     cursor: pointer;

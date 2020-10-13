@@ -56,7 +56,7 @@ export default defineComponent({
         border-radius: 4px;
         width: 100%;
         padding: 6px 10px;
-        border: 1px solid var(--secondary-background);
+        border: 1px solid var(--secundary-background);
 
         &-title {
             font-size: 26px;
@@ -73,14 +73,14 @@ export default defineComponent({
             font-weight: 600;
             margin-left: 20px;
             margin-bottom: 30px;
-            color: #aaa;
+            color: var(--gray);
             font-size: 13pt;
         }
     }
 
     .balance {
         padding: 20px;
-        border: 1px solid var(--secondary-background);
+        border: 1px solid var(--secundary-background);
         border-radius: 4px;
         margin-top: 20px;
 

@@ -25,10 +25,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 .home-table {
     padding: 6px;
-    border: 1px solid var(--secondary-background);
+    border: 1px solid var(--secundary-background);
 
     & > header {
-        color: var(--secundary-text);
+        color: var(--tertiary-text);
         font-weight: bold;
         font-size: 24px;
         padding: 10px;

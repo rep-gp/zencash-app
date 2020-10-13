@@ -34,7 +34,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .expenses_row{
     display: flex;
-    background-color: white;
+    background-color: var(--primary-background);
     align-items: center;
     border-bottom: 1px solid #d4d5db;
     height: 35px;
@@ -66,6 +66,6 @@ export default defineComponent({
 .value {
     font-weight: 700;
     font-size: 1.8vh;
-    color: #535366;
+    color: var(--secundary-text);
 }
 </style>

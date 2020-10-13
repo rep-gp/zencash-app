@@ -22,7 +22,7 @@ button {
     font-size: 13pt;
     font-weight: 700;
     color: var(--green);
-    background: var(--main-background);
+    background: var(--primary-background);
     cursor: pointer;
     transition: 200ms ease;
     opacity: .6;

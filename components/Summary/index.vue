@@ -63,9 +63,8 @@ export default defineComponent({
     border-radius: 5px;
     height: 40vh;
     margin-left: 2%;
-    color: white;
     padding: 1.5% 2% 1.5% 2%;
-    border: 1px solid var(--secondary-background)
+    border: 1px solid var(--secundary-background)
 }
 
 .summary-title {
@@ -125,7 +124,7 @@ export default defineComponent({
 .summary-finish-value {
     font-size: 1.1rem;
     font-weight: 500;
-    color: #1691c5
+    color: var(--blue)
 }
 
 .saque{
