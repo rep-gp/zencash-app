@@ -46,12 +46,12 @@ export default defineComponent({
                     colors: ['transparent']
                 },
                 xaxis: {
-                    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    categories: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
                 },
                 yaxis: {
                     opposite: true,
                     title: {
-                        text: '$ (thousands)'
+                        text: '$ ( mil )'
                     }
                 },
                 fill: {
@@ -64,7 +64,7 @@ export default defineComponent({
                 tooltip: {
                     y: {
                         formatter (val: any) {
-                            return '$ ' + val + ' thousands'
+                            return '$ ' + val + ' mil'
                         }
                     }
                 }

@@ -15,9 +15,19 @@ export const parseTransaction = (data: any): any => {
             )
                 ? (transaction.payment_date = 'Today')
                 : moment(transaction.payment_date).format('DD/MM/YYYY')
-            transaction.payment_method = String(
-                transaction.payment_method
-            ).replace('_', ' ')
+
+            if (transaction.type === 'sell') {
+                transaction.type = 'entrada'
+            } else if (transaction.type === 'bill') {
+                transaction.type = 'saida'
+            }
+
+            if (transaction.payment_method === 'credit_card') {
+                transaction.payment_method = 'cartao de credito'
+            } else if (transaction.payment_method === 'money') {
+                transaction.payment_method = 'dinheiro'
+            }
+
             transaction.value = formatter.format(transaction.value)
         })
     })

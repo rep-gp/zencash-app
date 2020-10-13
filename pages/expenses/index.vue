@@ -1,6 +1,15 @@
 <template>
     <div class="expenses-page">
         <h1>Gastos</h1>
+        <div class="expenses-content">
+            <div class="expenses-list">
+                <Expenses />
+            </div>
+
+            <CardChart title="Resumo de Gastos" class="donut-chart">
+                <DonutChart />
+            </CardChart>
+        </div>
     </div>
 </template>
 
@@ -20,5 +29,19 @@ export default defineComponent({
     h1 {
         font-size: 40px;
     }
+}
+
+.expenses-content {
+    display: flex
+}
+
+.expenses-list {
+    flex: 1;
+    margin-right: 2%;
+}
+
+.donut-chart {
+    flex: 1;
+    height: 40vh;
 }
 </style>
